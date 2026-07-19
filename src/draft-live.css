@@ -1,0 +1,78 @@
+/* Live Draft behaviour: the document page stays fixed while its manuscript
+   column scrolls. Comment cards are repositioned from the visible anchors. */
+.left-page-body,
+.document-region,
+.draft-editor {
+  min-height: 0;
+}
+
+.left-page-body {
+  overflow: hidden;
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.document-region {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 100%;
+}
+
+.margin-comments,
+.comments-list {
+  min-height: 0;
+}
+
+.draft-editor {
+  flex: 1 1 auto;
+  height: auto;
+  max-height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.draft-paragraph {
+  display: block;
+  min-height: 1.68em;
+  margin: 0 0 .75em;
+}
+
+.draft-paragraph.is-committed {
+  cursor: text;
+}
+
+.draft-paragraph.is-pending {
+  cursor: default;
+}
+
+.draft-paragraph.is-editing {
+  outline: none;
+}
+
+.draft-paragraph.is-editing:empty::before {
+  content: attr(data-placeholder);
+  color: #999;
+}
+
+/* Remove the former red focus rule: the Draft remains visually neutral while
+   the caret is active. */
+.draft-editor:focus {
+  box-shadow: none;
+}
+
+/* The two documents share one physical manuscript baseline. Keeping this
+   override here avoids separate left/right padding values drifting apart. */
+:root {
+  --document-page-top: clamp(38px, 5.1vh, 58px);
+  --document-page-bottom: clamp(28px, 3.8vh, 44px);
+}
+
+.left-page-body {
+  padding-top: var(--document-page-top);
+  padding-bottom: var(--document-page-bottom);
+}
+
+.revision-output {
+  padding-top: var(--document-page-top);
+  padding-bottom: var(--document-page-bottom);
+}

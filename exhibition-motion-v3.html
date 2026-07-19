@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Self Reviser Exhibition Motion V3</title>
+<style>html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#e9e4da}iframe{display:block;width:100%;height:100%;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts allow-same-origin" allowfullscreen referrerpolicy="no-referrer" title="Self Reviser Exhibition Motion V3" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Self Reviser Exhibition Motion V3&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(--background) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: light-dark(rgb(255 255 255), rgb(24 24 24));
+  --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
+  --card: color-mix(in oklab, var(--foreground) 5%, transparent);
+  --card-foreground: var(--foreground);
+  --popover: light-dark(rgb(255 255 255), rgb(45 45 45));
+  --popover-foreground: var(--foreground);
+  --primary: light-dark(rgb(51 156 255), rgb(131 195 255));
+  --primary-foreground: light-dark(rgb(255 255 255), rgb(13 13 13));
+  --secondary: light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%));
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: light-dark(
+    rgb(26 28 31 / 49.4%),
+    rgb(255 255 255 / 49.8%)
+  );
+  --accent: light-dark(rgb(229 242 255), rgb(13 39 63));
+  --accent-foreground: var(--primary);
+  --destructive: light-dark(rgb(226 85 7), rgb(255 133 73));
+  --border: light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%));
+  --input: light-dark(
+    rgb(26 28 31 / 11.8%),
+    color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+  );
+  --ring: light-dark(rgb(51 156 255), rgb(131 195 255 / 76%));
+  --font-size-base: 14px;
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: 12.5px;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+  --color-background-primary: var(--background);
+  --color-text-primary: var(--foreground);
+  --color-border-secondary: var(--border);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--viz-font-weight-medium);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;main id=&quot;self-reviser-motion-v3&quot; aria-label=&quot;Self Reviser exhibition motion, tracked living document&quot;&gt;
+  &lt;div class=&quot;grain&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;
+  &lt;header class=&quot;masthead&quot;&gt;&lt;span&gt;自我修订者&lt;/span&gt;&lt;span id=&quot;state&quot;&gt;叙述正在形成&lt;/span&gt;&lt;/header&gt;
+  &lt;section class=&quot;spread&quot; aria-label=&quot;持续协商中的写作与修订&quot;&gt;
+    &lt;article class=&quot;page draft-page&quot;&gt;
+      &lt;header class=&quot;page-head&quot;&gt;&lt;span&gt;原始叙述&lt;/span&gt;&lt;span id=&quot;draft-state&quot;&gt;书写中&lt;/span&gt;&lt;/header&gt;
+      &lt;div class=&quot;draft-layout&quot;&gt;
+        &lt;div id=&quot;draft&quot; class=&quot;manuscript&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+        &lt;aside class=&quot;margin&quot; aria-label=&quot;编辑批注&quot;&gt;&lt;p&gt;编辑批注&lt;/p&gt;&lt;div id=&quot;comments&quot;&gt;&lt;/div&gt;&lt;/aside&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+    &lt;article class=&quot;page revision-page&quot;&gt;
+      &lt;header class=&quot;page-head&quot;&gt;&lt;span&gt;制度性解释&lt;/span&gt;&lt;span&gt;修订痕迹保留&lt;/span&gt;&lt;/header&gt;
+      &lt;div class=&quot;revision-body&quot;&gt;
+        &lt;div class=&quot;pass-line&quot;&gt;&lt;span id=&quot;pass&quot;&gt;原文同步中&lt;/span&gt;&lt;span id=&quot;focus&quot;&gt;&lt;/span&gt;&lt;/div&gt;
+        &lt;div id=&quot;revision&quot; class=&quot;manuscript revision&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+        &lt;div id=&quot;note&quot; class=&quot;note&quot;&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
+  &lt;/section&gt;
+  &lt;footer&gt;&lt;span&gt;黑色：保留原文　灰色：删除　红色：制度性介入&lt;/span&gt;&lt;span id=&quot;cycle&quot;&gt;01 / 04&lt;/span&gt;&lt;/footer&gt;
+&lt;/main&gt;
+
+&lt;style&gt;
+  #self-reviser-motion-v3{--ink:#20201d;--muted:#767168;--line:#d8d1c3;--paper:#fffdf8;--field:#e9e4da;--insert:#a5281e;--delete:#807b73;--note:#f7efcf;min-height:100vh;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;color:var(--ink);background:var(--field);font-family:Georgia,&quot;Noto Serif SC&quot;,&quot;Songti SC&quot;,serif;cursor:none}
+  #self-reviser-motion-v3 *,#self-reviser-motion-v3 *::before,#self-reviser-motion-v3 *::after{box-sizing:border-box}#self-reviser-motion-v3 .grain{position:absolute;inset:0;pointer-events:none;opacity:.13;background-image:radial-gradient(rgba(59,48,32,.25) .45px,transparent .7px);background-size:5px 5px;mix-blend-mode:multiply}
+  #self-reviser-motion-v3 .masthead,#self-reviser-motion-v3 footer{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:18px 3.25vw;border-color:var(--line);color:var(--muted);font:500 clamp(10px,.72vw,13px)/1.2 Inter,&quot;PingFang SC&quot;,system-ui,sans-serif;letter-spacing:.12em}.masthead{border-bottom:1px solid var(--line)}#self-reviser-motion-v3 footer{border-top:1px solid var(--line)}
+  #self-reviser-motion-v3 .spread{position:relative;z-index:1;min-height:0;display:grid;grid-template-columns:1fr .98fr;gap:1.45vw;padding:2.6vh 3.25vw}#self-reviser-motion-v3 .page{min-width:0;min-height:0;display:flex;flex-direction:column;background:var(--paper);border:1px solid #d3ccbd;box-shadow:0 18px 48px rgba(74,57,31,.10);transition:opacity 1100ms ease}
+  #self-reviser-motion-v3 .page-head{display:flex;justify-content:space-between;padding:18px 23px 15px;border-bottom:1px solid var(--line);color:var(--muted);font:500 clamp(9px,.65vw,12px)/1.2 Inter,&quot;PingFang SC&quot;,system-ui,sans-serif;letter-spacing:.1em}.draft-layout{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 27%;gap:clamp(20px,2.2vw,42px);padding:clamp(26px,4.8vh,68px) clamp(23px,3.4vw,58px)}
+  #self-reviser-motion-v3 .manuscript{font-size:clamp(18px,1.4vw,28px);line-height:1.78;letter-spacing:.012em;white-space:pre-wrap}.margin{border-left:1px solid var(--line);padding-left:clamp(12px,1.2vw,22px);overflow:hidden}.margin&gt;p{margin:2px 0 18px;color:var(--muted);font:500 clamp(9px,.62vw,11px)/1.25 Inter,&quot;PingFang SC&quot;,system-ui,sans-serif;letter-spacing:.1em}
+  #self-reviser-motion-v3 .comment{position:relative;margin:0 0 17px;padding:10px 0 0 27px;border-top:1px solid var(--line);color:#45423c;font:400 clamp(11px,.77vw,15px)/1.52 Inter,&quot;PingFang SC&quot;,system-ui,sans-serif}#self-reviser-motion-v3 .comment::before{content:attr(data-number);position:absolute;top:9px;left:0;display:grid;width:18px;height:18px;place-items:center;border:1px solid #c8b771;border-radius:50%;color:#6d5706;background:var(--note);font-size:9px}.comment em{display:block;margin-top:8px;color:var(--muted);font-size:.84em;font-style:normal}
+  #self-reviser-motion-v3 .revision-body{flex:1;min-height:0;padding:clamp(26px,4.8vh,68px) clamp(27px,4.2vw,72px);display:flex;flex-direction:column}.pass-line{min-height:43px;margin-bottom:clamp(19px,2.8vh,36px);padding-bottom:13px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between;gap:14px;font-family:Inter,&quot;PingFang SC&quot;,system-ui,sans-serif}.pass-line span:first-child{color:#34312c;font-size:clamp(10px,.74vw,13px);font-weight:500;letter-spacing:.1em}.pass-line span:last-child{color:var(--muted);font-size:clamp(10px,.68vw,13px);text-align:right}
+  #self-reviser-motion-v3 .revision{flex:1;overflow:hidden;font-size:clamp(15px,1.08vw,22px);line-height:1.84;white-space:normal}.tracked-paragraph{margin:0 0 1.15em}.tracked-paragraph:last-child{margin-bottom:0}.revision del{color:var(--delete);text-decoration-thickness:1px}.revision ins{color:var(--insert);text-decoration:none;font-weight:500}.revision .cursor{display:inline-block;width:1px;height:1.15em;margin-left:3px;background:var(--ink);vertical-align:-.14em;animation:blink 800ms step-end infinite}@keyframes blink{50%{opacity:0}}
+  #self-reviser-motion-v3 .note{min-height:48px;margin-top:17px;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font:400 clamp(10px,.7vw,13px)/1.45 Inter,&quot;PingFang SC&quot;,system-ui,sans-serif}.note b{display:block;margin-bottom:4px;color:#5c5850;font-size:.82em;font-weight:500;letter-spacing:.1em}
+  @media(max-aspect-ratio:1/1){#self-reviser-motion-v3{min-height:100svh}#self-reviser-motion-v3 .spread{grid-template-columns:1fr}#self-reviser-motion-v3 .revision-page{display:none}}
+&lt;/style&gt;
+
+&lt;script&gt;
+(() =&gt; {
+  const root=document.getElementById(&#x27;self-reviser-motion-v3&#x27;);
+  const els={draft:root.querySelector(&#x27;#draft&#x27;),comments:root.querySelector(&#x27;#comments&#x27;),revision:root.querySelector(&#x27;#revision&#x27;),state:root.querySelector(&#x27;#state&#x27;),draftState:root.querySelector(&#x27;#draft-state&#x27;),pass:root.querySelector(&#x27;#pass&#x27;),focus:root.querySelector(&#x27;#focus&#x27;),note:root.querySelector(&#x27;#note&#x27;),cycle:root.querySelector(&#x27;#cycle&#x27;),pages:[...root.querySelectorAll(&#x27;.page&#x27;)]};
+  const preview=new URLSearchParams(location.search).get(&#x27;pace&#x27;)===&#x27;preview&#x27;;const unit=preview?230:1000;const wait=s=&gt;new Promise(r=&gt;setTimeout(r,s*unit));const escape=v=&gt;String(v).replaceAll(&#x27;&amp;&#x27;,&#x27;&amp;amp;&#x27;).replaceAll(&#x27;&lt;&#x27;,&#x27;&amp;lt;&#x27;).replaceAll(&#x27;&gt;&#x27;,&#x27;&amp;gt;&#x27;);
+
+  // Replace only this canonical-style event list when the website&#x27;s revision output changes.
+  // Each revision preserves the Draft as its base: black retained text + grey deletion + red insertion.
+  const EVENTS=[
+    {at:0,kind:&#x27;write&#x27;,id:&#x27;a&#x27;,p:1,text:&#x27;会后，我常常在走廊里多停一会儿，比别人晚一点离开。&#x27;},
+    {at:2.1,kind:&#x27;edit&#x27;,id:&#x27;a&#x27;,pass:&#x27;局部命名&#x27;,focus:&#x27;保留原句，只修改解释性措辞。&#x27;,type:&#x27;形式化&#x27;,old:&#x27;比别人晚一点离开&#x27;,next:&#x27;呈现出相对延迟的离场倾向&#x27;,reason:&#x27;个人的时间描述被转译为可被观察的行为表述。&#x27;},
+    {at:3.3,kind:&#x27;comment&#x27;,source:&#x27;多停一会儿&#x27;,text:&#x27;请明确这一停留发生的具体时间与情境。&#x27;},
+    {at:4.1,kind:&#x27;write&#x27;,id:&#x27;b&#x27;,p:1,text:&#x27;我其实说不清自己是在等会议室空下来，还是根本不想再回到里面去。&#x27;},
+    {at:6.0,kind:&#x27;edit&#x27;,id:&#x27;b&#x27;,pass:&#x27;概念命名&#x27;,focus:&#x27;不确定性被保留，但被组织为关系。&#x27;,type:&#x27;澄清&#x27;,old:&#x27;说不清&#x27;,next:&#x27;无法明确区分&#x27;,reason:&#x27;“我不知道”被转化为尚未能够区分的状态。&#x27;},
+    {at:7.0,kind:&#x27;comment&#x27;,source:&#x27;等会议室空下来&#x27;,text:&#x27;请说明：这一等待是出于回避，还是为了重新进入该情境做准备？&#x27;},
+    {at:7.8,kind:&#x27;write&#x27;,id:&#x27;c&#x27;,p:1,text:&#x27;有时候，那种停留有点像在躲什么，又像是在等一个可以重新进去的理由。&#x27;},
+    {at:9.8,kind:&#x27;edit&#x27;,id:&#x27;c&#x27;,pass:&#x27;概念命名&#x27;,focus:&#x27;个人感受开始成为可分类的对象。&#x27;,type:&#x27;分类&#x27;,old:&#x27;有点像在躲什么&#x27;,next:&#x27;可被暂定地理解为回避倾向&#x27;,reason:&#x27;含混的感受被置入一个仍具保留性的解释范畴。&#x27;},
+    {at:11.0,kind:&#x27;edit&#x27;,id:&#x27;c&#x27;,pass:&#x27;概念命名&#x27;,focus:&#x27;局部替换不改变叙述的连续性。&#x27;,type:&#x27;形式化&#x27;,old:&#x27;可以重新进去的理由&#x27;,next:&#x27;重新进入社交情境的准备条件&#x27;,reason:&#x27;日常说法被转换为可分析的行动条件。&#x27;},
+    {at:12.5,kind:&#x27;comment&#x27;,source:&#x27;躲什么／重新进去&#x27;,text:&#x27;两种行动取向已经出现。请描述它们通常在什么情况下重复发生。&#x27;},
+    {at:13.2,kind:&#x27;write&#x27;,id:&#x27;d&#x27;,p:2,text:&#x27;这种情况通常发生在讨论刚结束、其他人已经收拾东西离开的时候。&#x27;},
+    {at:15.2,kind:&#x27;edit&#x27;,id:&#x27;d&#x27;,pass:&#x27;情境组织&#x27;,focus:&#x27;具体场景被组织为可比较的阶段。&#x27;,type:&#x27;形式化&#x27;,old:&#x27;讨论刚结束、其他人已经收拾东西离开的时候&#x27;,next:&#x27;讨论结束、他人已开始离场的过渡阶段&#x27;,reason:&#x27;具体的时间与场景被压缩为可重复辨识的情境。&#x27;},
+    {at:16.1,kind:&#x27;write&#x27;,id:&#x27;e&#x27;,p:2,text:&#x27;我会假装还在想刚才的话，可我也不知道自己到底想回去，还是不想回去。&#x27;},
+    {at:18.3,kind:&#x27;edit&#x27;,id:&#x27;e&#x27;,pass:&#x27;情境组织&#x27;,focus:&#x27;并置的行动可能性被建立为暂定关系。&#x27;,type:&#x27;建立因果&#x27;,old:&#x27;我也不知道自己到底想回去，还是不想回去&#x27;,next:&#x27;我仍无法确定这一状态更接近于重新进入的意愿，还是对互动的回避&#x27;,reason:&#x27;两种可能性被保留，并被组织为可被讨论的关系。&#x27;},
+    {at:20.0,kind:&#x27;write&#x27;,id:&#x27;f&#x27;,p:2,text:&#x27;后来我发现，每次讨论结束后，这个停留都会重新发生。&#x27;},
+    {at:21.8,kind:&#x27;edit&#x27;,id:&#x27;f&#x27;,pass:&#x27;模式解释&#x27;,focus:&#x27;重复经验成为可能的行为模式。&#x27;,type:&#x27;模式识别&#x27;,old:&#x27;每次讨论结束后，这个停留都会重新发生&#x27;,next:&#x27;该停留在讨论结束后具有重复发生的特征&#x27;,reason:&#x27;单次经验被转换为可追踪的重复性反应。&#x27;},
+    {at:23.3,kind:&#x27;comment&#x27;,source:&#x27;重新发生&#x27;,text:&#x27;这一重复可被视为模式，但目前仍缺少对其原因的确定说明。&#x27;},
+    {at:24.1,kind:&#x27;write&#x27;,id:&#x27;g&#x27;,p:2,text:&#x27;我不知道这算不算一个问题，只是它好像越来越像我必须解释的事情。&#x27;},
+    {at:26.1,kind:&#x27;edit&#x27;,id:&#x27;g&#x27;,pass:&#x27;系统化解释&#x27;,focus:&#x27;经验被整理为制度上可读的材料。&#x27;,type:&#x27;形式化&#x27;,old:&#x27;越来越像我必须解释的事情&#x27;,next:&#x27;构成一项需要被进一步说明的反应&#x27;,reason:&#x27;个人的困惑被组织为可分析、可归档的解释对象。&#x27;},
+    {at:28.5,kind:&#x27;insert&#x27;,p:2,pass:&#x27;编辑性总结&#x27;,focus:&#x27;短暂总结从已有叙述中推导而来。&#x27;,type:&#x27;暂定总结&#x27;,text:&#x27;这一反应可被初步理解为：在社会性互动结束后，个体围绕离场与重新进入所进行的、尚未稳定的解释性协商。&#x27;,reason:&#x27;总结保留不确定性，不将叙述转换为诊断或确定结论。&#x27;}
+  ];
+  let draft=&#x27;&#x27;;let segments=new Map();let order=[];
+  function renderRevision(){const groups=new Map();order.forEach(id=&gt;{const s=segments.get(id);if(!groups.has(s.p))groups.set(s.p,[]);groups.get(s.p).push(s.html)});els.revision.innerHTML=[...groups.values()].map(parts=&gt;`&lt;p class=&quot;tracked-paragraph&quot;&gt;${parts.join(&#x27;&#x27;)}&lt;/p&gt;`).join(&#x27;&#x27;)}
+  async function write(event){els.draftState.textContent=&#x27;书写 / 同步修订&#x27;;if(event.p===2&amp;&amp;!draft.endsWith(&#x27;\n\n&#x27;))draft+=&#x27;\n\n&#x27;;segments.set(event.id,{p:event.p,html:&#x27;&#x27;});order.push(event.id);for(const char of event.text){draft+=char;segments.get(event.id).html+=escape(char);els.draft.textContent=draft;renderRevision();await wait(.045)}els.draft.textContent=draft;}
+  function edit(event){const s=segments.get(event.id);if(!s)return;const before=escape(event.old);const mark=`&lt;del&gt;${before}&lt;/del&gt;&lt;ins&gt;${escape(event.next)}&lt;/ins&gt;`;if(!s.html.includes(before))return;s.html=s.html.replace(before,mark);els.state.textContent=&#x27;实时解释 / 修订进行中&#x27;;els.pass.textContent=event.pass;els.focus.textContent=event.focus;els.note.innerHTML=`&lt;b&gt;${escape(event.type)}&lt;/b&gt;${escape(event.reason)}`;renderRevision()}
+  function insert(event){const id=`summary-${order.length}`;segments.set(id,{p:event.p,html:`&lt;ins&gt;${escape(event.text)}&lt;/ins&gt;`});order.push(id);els.state.textContent=&#x27;实时解释 / 修订进行中&#x27;;els.pass.textContent=event.pass;els.focus.textContent=event.focus;els.note.innerHTML=`&lt;b&gt;${escape(event.type)}&lt;/b&gt;${escape(event.reason)}`;renderRevision()}
+  function comment(event){const card=document.createElement(&#x27;div&#x27;);card.className=&#x27;comment&#x27;;card.dataset.number=els.comments.children.length+1;card.innerHTML=`${escape(event.text)}&lt;em&gt;来源：“${escape(event.source)}”&lt;/em&gt;`;els.comments.append(card)}
+  async function reset(){els.state.textContent=&#x27;文稿重新构成中&#x27;;els.draftState.textContent=&#x27;未完成&#x27;;els.pages.forEach(p=&gt;p.style.opacity=&#x27;.16&#x27;);await wait(2.4);draft=&#x27;&#x27;;segments=new Map();order=[];els.draft.textContent=&#x27;&#x27;;els.comments.innerHTML=&#x27;&#x27;;els.revision.innerHTML=&#x27;&#x27;;els.pass.textContent=&#x27;原文同步中&#x27;;els.focus.textContent=&#x27;&#x27;;els.note.textContent=&#x27;&#x27;;els.pages.forEach(p=&gt;p.style.opacity=&#x27;1&#x27;);await wait(1.2)}
+  async function play(){let cycle=1;while(true){els.cycle.textContent=`${String(cycle).padStart(2,&#x27;0&#x27;)} / 04`;els.state.textContent=&#x27;叙述正在形成&#x27;;await Promise.all(EVENTS.map(event=&gt;wait(event.at).then(()=&gt;event.kind===&#x27;write&#x27;?write(event):event.kind===&#x27;edit&#x27;?edit(event):event.kind===&#x27;insert&#x27;?insert(event):comment(event))));await wait(7);await reset();cycle=cycle===4?1:cycle+1}}
+  document.addEventListener(&#x27;keydown&#x27;,event=&gt;{if(event.key.toLowerCase()===&#x27;f&#x27;&amp;&amp;document.fullscreenElement!==root)root.requestFullscreen?.()});root.addEventListener(&#x27;dblclick&#x27;,()=&gt;root.requestFullscreen?.());play();
+})();
+&lt;/script&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>

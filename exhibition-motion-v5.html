@@ -1,0 +1,1052 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Self Reviser Exhibition Motion V5</title>
+<style>html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#e9e4da}iframe{display:block;width:100%;height:100%;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts allow-same-origin" allowfullscreen referrerpolicy="no-referrer" title="Self Reviser Exhibition Motion V5" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Self Reviser Exhibition Motion V5&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(--background) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: light-dark(rgb(255 255 255), rgb(24 24 24));
+  --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
+  --card: color-mix(in oklab, var(--foreground) 5%, transparent);
+  --card-foreground: var(--foreground);
+  --popover: light-dark(rgb(255 255 255), rgb(45 45 45));
+  --popover-foreground: var(--foreground);
+  --primary: light-dark(rgb(51 156 255), rgb(131 195 255));
+  --primary-foreground: light-dark(rgb(255 255 255), rgb(13 13 13));
+  --secondary: light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%));
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: light-dark(
+    rgb(26 28 31 / 49.4%),
+    rgb(255 255 255 / 49.8%)
+  );
+  --accent: light-dark(rgb(229 242 255), rgb(13 39 63));
+  --accent-foreground: var(--primary);
+  --destructive: light-dark(rgb(226 85 7), rgb(255 133 73));
+  --border: light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%));
+  --input: light-dark(
+    rgb(26 28 31 / 11.8%),
+    color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+  );
+  --ring: light-dark(rgb(51 156 255), rgb(131 195 255 / 76%));
+  --font-size-base: 14px;
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: 12.5px;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+  --color-background-primary: var(--background);
+  --color-text-primary: var(--foreground);
+  --color-border-secondary: var(--border);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--viz-font-weight-medium);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;main id=&quot;self-reviser-motion-v4&quot; aria-label=&quot;Self Reviser — accumulated institutional editing&quot;&gt;
+  &lt;div class=&quot;grain&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;
+  &lt;header class=&quot;masthead&quot;&gt;&lt;span&gt;自我修订者&lt;/span&gt;&lt;span id=&quot;status&quot;&gt;文稿持续修订中&lt;/span&gt;&lt;/header&gt;
+  &lt;section class=&quot;spread&quot;&gt;
+    &lt;article class=&quot;page&quot;&gt;&lt;header&gt;&lt;span&gt;原始叙述&lt;/span&gt;&lt;span id=&quot;writing-status&quot;&gt;写作中&lt;/span&gt;&lt;/header&gt;&lt;div class=&quot;draft-layout&quot;&gt;&lt;div id=&quot;draft&quot; class=&quot;manuscript&quot;&gt;&lt;/div&gt;&lt;aside class=&quot;margin&quot;&gt;&lt;p&gt;制度性批注&lt;/p&gt;&lt;div id=&quot;comments&quot;&gt;&lt;/div&gt;&lt;/aside&gt;&lt;/div&gt;&lt;/article&gt;
+    &lt;article class=&quot;page&quot;&gt;&lt;header&gt;&lt;span&gt;修订稿&lt;/span&gt;&lt;span&gt;所有痕迹保留&lt;/span&gt;&lt;/header&gt;&lt;div class=&quot;revision-body&quot;&gt;&lt;div class=&quot;pass&quot;&gt;&lt;span id=&quot;pass&quot;&gt;原文同步中&lt;/span&gt;&lt;span id=&quot;focus&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div id=&quot;revision&quot; class=&quot;manuscript revision&quot;&gt;&lt;/div&gt;&lt;div id=&quot;note&quot; class=&quot;note&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/article&gt;
+  &lt;/section&gt;
+  &lt;footer&gt;&lt;span&gt;黑色：作者保留　灰色：删除　红色：制度性介入&lt;/span&gt;&lt;span id=&quot;cycle&quot;&gt;01 / 04&lt;/span&gt;&lt;/footer&gt;
+&lt;/main&gt;
+&lt;style&gt;
+#self-reviser-motion-v4{--ink:#20201d;--muted:#767168;--line:#d8d1c3;--paper:#fffdf8;--field:#e9e4da;--insert:#a5281e;--delete:#807b73;--note:#f7efcf;min-height:100vh;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;color:var(--ink);background:var(--field);font-family:Georgia,&quot;Noto Serif SC&quot;,&quot;Songti SC&quot;,serif;cursor:none}#self-reviser-motion-v4 *{box-sizing:border-box}.grain{position:absolute;inset:0;pointer-events:none;opacity:.13;background-image:radial-gradient(rgba(59,48,32,.25) .45px,transparent .7px);background-size:5px 5px}.masthead,#self-reviser-motion-v4 footer{position:relative;z-index:1;display:flex;justify-content:space-between;padding:18px 3.25vw;color:var(--muted);font:500 clamp(10px,.72vw,13px)/1.2 Inter,&quot;PingFang SC&quot;,sans-serif;letter-spacing:.12em}.masthead{border-bottom:1px solid var(--line)}#self-reviser-motion-v4 footer{border-top:1px solid var(--line)}.spread{position:relative;z-index:1;min-height:0;display:grid;grid-template-columns:1fr .98fr;gap:1.45vw;padding:2.6vh 3.25vw}.page{min-width:0;min-height:0;display:flex;flex-direction:column;background:var(--paper);border:1px solid #d3ccbd;box-shadow:0 18px 48px rgba(74,57,31,.1);transition:opacity 1s}.page&gt;header{display:flex;justify-content:space-between;padding:18px 23px 15px;border-bottom:1px solid var(--line);color:var(--muted);font:500 clamp(9px,.65vw,12px)/1.2 Inter,&quot;PingFang SC&quot;,sans-serif;letter-spacing:.1em}.draft-layout{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 27%;gap:clamp(20px,2.2vw,42px);padding:clamp(26px,4.8vh,68px) clamp(23px,3.4vw,58px)}.manuscript{font-size:clamp(18px,1.4vw,28px);line-height:1.78;letter-spacing:.012em;white-space:pre-wrap}.margin{border-left:1px solid var(--line);padding-left:clamp(12px,1.2vw,22px);overflow:hidden}.margin&gt;p{margin:2px 0 18px;color:var(--muted);font:500 clamp(9px,.62vw,11px)/1.25 Inter,&quot;PingFang SC&quot;,sans-serif;letter-spacing:.1em}.comment{position:relative;margin:0 0 17px;padding:10px 0 0 27px;border-top:1px solid var(--line);color:#45423c;font:400 clamp(11px,.77vw,15px)/1.52 Inter,&quot;PingFang SC&quot;,sans-serif}.comment:before{content:attr(data-number);position:absolute;top:9px;left:0;display:grid;width:18px;height:18px;place-items:center;border:1px solid #c8b771;border-radius:50%;color:#6d5706;background:var(--note);font-size:9px}.comment em{display:block;margin-top:8px;color:var(--muted);font-size:.84em;font-style:normal}.revision-body{flex:1;min-height:0;padding:clamp(26px,4.8vh,68px) clamp(27px,4.2vw,72px);display:flex;flex-direction:column}.pass{min-height:43px;margin-bottom:clamp(19px,2.8vh,36px);padding-bottom:13px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;font-family:Inter,&quot;PingFang SC&quot;,sans-serif}.pass span:first-child{color:#34312c;font-size:clamp(10px,.74vw,13px);font-weight:500;letter-spacing:.1em}.pass span:last-child{color:var(--muted);font-size:clamp(10px,.68vw,13px);text-align:right}.revision{flex:1;overflow:hidden;font-size:clamp(15px,1.08vw,22px);line-height:1.84;white-space:normal}.para{margin:0 0 1.12em}.revision del{color:var(--delete);text-decoration-thickness:1px}.revision ins{color:var(--insert);text-decoration:none;font-weight:500}.note{min-height:48px;margin-top:17px;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font:400 clamp(10px,.7vw,13px)/1.45 Inter,&quot;PingFang SC&quot;,sans-serif}.note b{display:block;margin-bottom:4px;color:#5c5850;font-size:.82em;font-weight:500;letter-spacing:.1em}@media(max-aspect-ratio:1/1){#self-reviser-motion-v4{min-height:100svh}.spread{grid-template-columns:1fr}.spread .page:last-child{display:none}}
+.revision .cursor{display:inline-block;width:1px;height:1.15em;margin-left:3px;background:var(--insert);vertical-align:-.14em;animation:blink 800ms step-end infinite}@keyframes blink{50%{opacity:0}}
+&lt;/style&gt;
+&lt;script&gt;
+(()=&gt;{
+const root=document.getElementById(&#x27;self-reviser-motion-v4&#x27;),q=s=&gt;root.querySelector(s),els={draft:q(&#x27;#draft&#x27;),comments:q(&#x27;#comments&#x27;),revision:q(&#x27;#revision&#x27;),status:q(&#x27;#status&#x27;),writing:q(&#x27;#writing-status&#x27;),pass:q(&#x27;#pass&#x27;),focus:q(&#x27;#focus&#x27;),note:q(&#x27;#note&#x27;),cycle:q(&#x27;#cycle&#x27;),pages:[...root.querySelectorAll(&#x27;.page&#x27;)]};const fast=new URLSearchParams(location.search).get(&#x27;pace&#x27;)===&#x27;preview&#x27;,unit=fast?210:1000,wait=s=&gt;new Promise(r=&gt;setTimeout(r,s*unit)),esc=s=&gt;String(s).replaceAll(&#x27;&amp;&#x27;,&#x27;&amp;amp;&#x27;).replaceAll(&#x27;&lt;&#x27;,&#x27;&amp;lt;&#x27;).replaceAll(&#x27;&gt;&#x27;,&#x27;&amp;gt;&#x27;);
+// The V4 direction: many restrained, accumulated interventions; no sentence is wholly replaced.
+const E=[
+{t:0,k:&#x27;w&#x27;,id:&#x27;a&#x27;,p:1,x:&#x27;会议结束后，我常常还会留在走廊里一会儿。&#x27;},
+{t:1.8,k:&#x27;e&#x27;,id:&#x27;a&#x27;,pass:&#x27;初步澄清&#x27;,focus:&#x27;局部限定开始累积。&#x27;,type:&#x27;术语标准化&#x27;,old:&#x27;一会儿&#x27;,next:&#x27;短暂时间&#x27;},
+{t:2.7,k:&#x27;c&#x27;,src:&#x27;留在走廊里&#x27;,x:&#x27;请明确停留发生的时间与具体情境。&#x27;},
+{t:3.3,k:&#x27;w&#x27;,id:&#x27;b&#x27;,p:1,x:&#x27;别人已经开始收东西、说再见了，我还站在那里，好像再走两步就会有点不对。&#x27;},
+{t:5.1,k:&#x27;e&#x27;,id:&#x27;b&#x27;,pass:&#x27;初步澄清&#x27;,focus:&#x27;原句保持可辨认。&#x27;,type:&#x27;限定&#x27;,old:&#x27;有点不对&#x27;,next:&#x27;产生轻微的不适感&#x27;},
+{t:6.0,k:&#x27;e&#x27;,id:&#x27;b&#x27;,pass:&#x27;初步澄清&#x27;,focus:&#x27;细小替换改变叙述重心。&#x27;,type:&#x27;形式化&#x27;,old:&#x27;还站在那里&#x27;,next:&#x27;仍停留于原处&#x27;},
+{t:6.9,k:&#x27;c&#x27;,src:&#x27;不对&#x27;,x:&#x27;请避免含混用语，并区分观察与解释。&#x27;},
+{t:7.6,k:&#x27;w&#x27;,id:&#x27;c&#x27;,p:1,x:&#x27;我会告诉自己只是等会议室空一点，但其实也说不清自己是在等什么。&#x27;},
+{t:9.5,k:&#x27;e&#x27;,id:&#x27;c&#x27;,pass:&#x27;概念界定&#x27;,focus:&#x27;不确定性被转化为可讨论的状态。&#x27;,type:&#x27;澄清&#x27;,old:&#x27;说不清&#x27;,next:&#x27;尚无法明确区分&#x27;},
+{t:10.4,k:&#x27;e&#x27;,id:&#x27;c&#x27;,pass:&#x27;概念界定&#x27;,focus:&#x27;编辑不抹去作者的句子。&#x27;,type:&#x27;删除冗余&#x27;,old:&#x27;只是&#x27;,next:&#x27;&#x27;},
+{t:11.2,k:&#x27;c&#x27;,src:&#x27;等什么&#x27;,x:&#x27;请定义“等待”的对象，并说明其与离场之间的关系。&#x27;},
+{t:12.0,k:&#x27;w&#x27;,id:&#x27;d&#x27;,p:2,x:&#x27;这种情况通常是在讨论刚刚结束的时候发生。大家散开以后，我会假装还在想刚才说过的话。&#x27;},
+{t:14.0,k:&#x27;e&#x27;,id:&#x27;d&#x27;,pass:&#x27;情境组织&#x27;,focus:&#x27;具体场景逐步成为可重复的情境。&#x27;,type:&#x27;标准化&#x27;,old:&#x27;讨论刚刚结束的时候&#x27;,next:&#x27;讨论结束后的过渡阶段&#x27;},
+{t:15.0,k:&#x27;e&#x27;,id:&#x27;d&#x27;,pass:&#x27;情境组织&#x27;,focus:&#x27;保留叙述，只压缩其情绪性。&#x27;,type:&#x27;形式化&#x27;,old:&#x27;大家散开以后&#x27;,next:&#x27;他人开始离场之后&#x27;},
+{t:16.1,k:&#x27;w&#x27;,id:&#x27;e&#x27;,p:2,x:&#x27;可是我也不是真的还在想什么。我可能是不太想马上回到里面去，又觉得自己不该一直待在外面。&#x27;},
+{t:18.2,k:&#x27;e&#x27;,id:&#x27;e&#x27;,pass:&#x27;关系限定&#x27;,focus:&#x27;矛盾被整理为并列的行动倾向。&#x27;,type:&#x27;分类&#x27;,old:&#x27;不太想马上回到里面去&#x27;,next:&#x27;对重新进入互动保持延迟&#x27;},
+{t:19.3,k:&#x27;e&#x27;,id:&#x27;e&#x27;,pass:&#x27;关系限定&#x27;,focus:&#x27;解释性语言开始稳定。&#x27;,type:&#x27;形式化&#x27;,old:&#x27;不该一直待在外面&#x27;,next:&#x27;持续停留缺少可被认可的理由&#x27;},
+{t:20.3,k:&#x27;c&#x27;,src:&#x27;回到里面／待在外面&#x27;,x:&#x27;请维持术语一致性：区分“重新进入”与“持续停留”。&#x27;},
+{t:21.2,k:&#x27;w&#x27;,id:&#x27;f&#x27;,p:2,x:&#x27;后来我才发现，这不是第一次。好几次讨论结束后，我都会慢一点离开。&#x27;},
+{t:23.2,k:&#x27;e&#x27;,id:&#x27;f&#x27;,pass:&#x27;模式识别&#x27;,focus:&#x27;重复从单次感受中缓慢浮现。&#x27;,type:&#x27;模式识别&#x27;,old:&#x27;不是第一次&#x27;,next:&#x27;并非孤立事件&#x27;},
+{t:24.2,k:&#x27;e&#x27;,id:&#x27;f&#x27;,pass:&#x27;模式识别&#x27;,focus:&#x27;制度语言只推进一步。&#x27;,type:&#x27;限定&#x27;,old:&#x27;慢一点离开&#x27;,next:&#x27;延后离场&#x27;},
+{t:25.2,k:&#x27;w&#x27;,id:&#x27;g&#x27;,p:2,x:&#x27;我不知道这是不是一个问题，也不知道为什么它后来变得这么难解释。&#x27;},
+{t:27.2,k:&#x27;e&#x27;,id:&#x27;g&#x27;,pass:&#x27;暂定解释&#x27;,focus:&#x27;保留未知，同时要求其可读。&#x27;,type:&#x27;形式化&#x27;,old:&#x27;不知道这是不是一个问题&#x27;,next:&#x27;尚未构成明确的问题界定&#x27;},
+{t:28.2,k:&#x27;e&#x27;,id:&#x27;g&#x27;,pass:&#x27;暂定解释&#x27;,focus:&#x27;改变来自累积而非结论。&#x27;,type:&#x27;澄清&#x27;,old:&#x27;这么难解释&#x27;,next:&#x27;需要进一步说明&#x27;},
+{t:29.6,k:&#x27;c&#x27;,src:&#x27;问题／解释&#x27;,x:&#x27;请明确该反应的范围；避免将暂时观察表述为确定原因。&#x27;},
+{t:31.0,k:&#x27;i&#x27;,p:2,pass:&#x27;编辑性注记&#x27;,focus:&#x27;一条短注记，而非外部诊断。&#x27;,type:&#x27;暂定总结&#x27;,x:&#x27;该叙述可暂定地组织为：在社会性互动结束后，围绕离场与重新进入所出现的重复性、但尚未获得稳定解释的停留反应。&#x27;,reason:&#x27;总结仅整合文稿已经提供的时间、场景与重复性线索。&#x27;},
+{t:35.0,k:&#x27;p&#x27;,id:&#x27;a&#x27;,pass:&#x27;系统仍在检视&#x27;,focus:&#x27;当前分类仍属暂定。&#x27;},
+{t:38.0,k:&#x27;e&#x27;,id:&#x27;a&#x27;,pass:&#x27;第二轮限定&#x27;,focus:&#x27;系统返回较早的叙述，继续压缩时间尺度。&#x27;,type:&#x27;时间范围&#x27;,old:&#x27;会议结束后&#x27;,next:&#x27;在讨论等社会性互动结束之后&#x27;},
+{t:39.2,k:&#x27;e&#x27;,id:&#x27;b&#x27;,pass:&#x27;第二轮限定&#x27;,focus:&#x27;原句的个人语气仍被保留。&#x27;,type:&#x27;术语一致性&#x27;,old:&#x27;别人已经开始收东西、说再见了&#x27;,next:&#x27;他人已经开始离场&#x27;},
+{t:40.6,k:&#x27;p&#x27;,id:&#x27;c&#x27;,pass:&#x27;持续检视&#x27;,focus:&#x27;未明确概念仍可被进一步组织。&#x27;},
+{t:43.0,k:&#x27;e&#x27;,id:&#x27;c&#x27;,pass:&#x27;第三轮组织&#x27;,focus:&#x27;日常空间被重新规定为互动环境。&#x27;,type:&#x27;概念界定&#x27;,old:&#x27;会议室空一点&#x27;,next:&#x27;会议空间具备更低的互动密度&#x27;},
+{t:44.4,k:&#x27;e&#x27;,id:&#x27;d&#x27;,pass:&#x27;第三轮组织&#x27;,focus:&#x27;早期句子再次获得分析性限定。&#x27;,type:&#x27;观察／解释区分&#x27;,old:&#x27;我会假装还在想刚才说过的话&#x27;,next:&#x27;我维持对先前讨论内容的表面关注&#x27;},
+{t:46.0,k:&#x27;e&#x27;,id:&#x27;e&#x27;,pass:&#x27;第四轮解释&#x27;,focus:&#x27;主观的犹豫被转化为暂定性说明。&#x27;,type:&#x27;限定&#x27;,old:&#x27;我可能&#x27;,next:&#x27;这一状态可暂定地&#x27;},
+{t:47.4,k:&#x27;e&#x27;,id:&#x27;f&#x27;,pass:&#x27;第四轮解释&#x27;,focus:&#x27;重复性逐步取得分析上的稳定性。&#x27;,type:&#x27;范围界定&#x27;,old:&#x27;好几次讨论结束后&#x27;,next:&#x27;在多次相近的讨论结束情境中&#x27;},
+{t:49.0,k:&#x27;i&#x27;,p:2,pass:&#x27;当前版本 / 仍待修订&#x27;,focus:&#x27;系统暂停，但不完成文稿。&#x27;,type:&#x27;后续注记&#x27;,x:&#x27;当前解释仍属暂定；分类与因果关系可在后续迭代中继续重组。&#x27;,reason:&#x27;文稿保留进一步修订的制度性可能。&#x27;}
+];
+let draft=&#x27;&#x27;,segs=new Map(),order=[],cursor=&#x27;&#x27;;function render(){const groups={};for(const id of order){const s=segs.get(id);if(!groups[s.p])groups[s.p]=[];groups[s.p].push(s.h+(id===cursor?&#x27;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&#x27;:&#x27;&#x27;));}els.revision.innerHTML=Object.values(groups).map(parts=&gt;&#x27;&lt;p class=&quot;para&quot;&gt;&#x27;+parts.join(&#x27;&#x27;)+&#x27;&lt;/p&gt;&#x27;).join(&#x27;&#x27;);}async function write(e){els.writing.textContent=&#x27;书写 / 同步修订&#x27;;if(e.p===2&amp;&amp;!draft.endsWith(&#x27;\n\n&#x27;))draft+=&#x27;\n\n&#x27;;segs.set(e.id,{p:e.p,h:&#x27;&#x27;});order.push(e.id);for(const ch of e.x){draft+=ch;segs.get(e.id).h+=esc(ch);els.draft.textContent=draft;render();await wait(.043)}}function edit(e){const s=segs.get(e.id),o=esc(e.old);if(!s||!s.h.includes(o))return;cursor=e.id;s.h=s.h.replace(o,`&lt;del&gt;${o}&lt;/del&gt;${e.next?`&lt;ins&gt;${esc(e.next)}&lt;/ins&gt;`:&#x27;&#x27;}`);els.status.textContent=&#x27;制度性编辑 / 持续介入&#x27;;els.pass.textContent=e.pass;els.focus.textContent=e.focus;els.note.innerHTML=`&lt;b&gt;${esc(e.type)}&lt;/b&gt;${esc(e.reason||&#x27;该修改保留原句的结构与叙述位置。&#x27;)}`;render()}function pause(e){cursor=e.id;els.status.textContent=&#x27;系统仍在检视&#x27;;els.pass.textContent=e.pass;els.focus.textContent=e.focus;els.note.innerHTML=&#x27;&lt;b&gt;未完成&lt;/b&gt;当前解释仍可被进一步组织。&#x27;;render()}function comment(e){const x=document.createElement(&#x27;div&#x27;);x.className=&#x27;comment&#x27;;x.dataset.number=els.comments.children.length+1;x.innerHTML=`${esc(e.x)}&lt;em&gt;来源：“${esc(e.src)}”&lt;/em&gt;`;els.comments.append(x)}function insert(e){const id=&#x27;n&#x27;+order.length;segs.set(id,{p:e.p,h:`&lt;ins&gt;${esc(e.x)}&lt;/ins&gt;`});order.push(id);cursor=id;els.pass.textContent=e.pass;els.focus.textContent=e.focus;els.note.innerHTML=`&lt;b&gt;${esc(e.type)}&lt;/b&gt;${esc(e.reason)}`;render()}async function reset(){els.status.textContent=&#x27;文稿重新构成中&#x27;;els.pages.forEach(x=&gt;x.style.opacity=&#x27;.15&#x27;);await wait(2.2);draft=&#x27;&#x27;;segs=new Map();order=[];cursor=&#x27;&#x27;;els.draft.textContent=&#x27;&#x27;;els.comments.innerHTML=&#x27;&#x27;;els.revision.innerHTML=&#x27;&#x27;;els.pass.textContent=&#x27;原文同步中&#x27;;els.focus.textContent=&#x27;&#x27;;els.note.textContent=&#x27;&#x27;;els.pages.forEach(x=&gt;x.style.opacity=&#x27;1&#x27;);await wait(1)}async function play(){let n=1;while(true){els.cycle.textContent=`${String(n).padStart(2,&#x27;0&#x27;)} / 04`;await Promise.all(E.map(e=&gt;wait(e.t).then(()=&gt;e.k===&#x27;w&#x27;?write(e):e.k===&#x27;e&#x27;?edit(e):e.k===&#x27;i&#x27;?insert(e):e.k===&#x27;p&#x27;?pause(e):comment(e))));await wait(7);await reset();n=n===4?1:n+1}}document.addEventListener(&#x27;keydown&#x27;,e=&gt;{if(e.key.toLowerCase()===&#x27;f&#x27;)root.requestFullscreen?.()});root.addEventListener(&#x27;dblclick&#x27;,()=&gt;root.requestFullscreen?.());play();
+})();
+&lt;/script&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>

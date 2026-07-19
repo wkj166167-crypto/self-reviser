@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: self-reviser
+    runtime: node
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: HOST
+        value: 0.0.0.0
+      - key: EXHIBITION_TIMEZONE
+        value: Europe/London
+      # Add every secret below manually in Render's Environment page. They are
+      # intentionally not copied from this repository or exposed to the client.
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: ARCHIVE_SESSION_TOKEN_PEPPER
+        sync: false
+      - key: ARCHIVE_DIAGNOSTIC_SECRET
+        sync: false
+      - key: ADMIN_EMAIL_ALLOWLIST
+        sync: false
+      - key: APP_BASE_URL
+        sync: false

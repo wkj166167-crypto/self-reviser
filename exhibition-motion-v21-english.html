@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Self Reviser Exhibition Motion V21 — English</title>
+<style>html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#000}iframe{display:block;width:100%;height:100%;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts allow-same-origin" allowfullscreen referrerpolicy="no-referrer" title="Self Reviser Exhibition Motion V21 — English" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Self Reviser Exhibition Motion V21 — English&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(--background) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: light-dark(rgb(255 255 255), rgb(24 24 24));
+  --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
+  --card: color-mix(in oklab, var(--foreground) 5%, transparent);
+  --card-foreground: var(--foreground);
+  --popover: light-dark(rgb(255 255 255), rgb(45 45 45));
+  --popover-foreground: var(--foreground);
+  --primary: light-dark(rgb(51 156 255), rgb(131 195 255));
+  --primary-foreground: light-dark(rgb(255 255 255), rgb(13 13 13));
+  --secondary: light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%));
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: light-dark(
+    rgb(26 28 31 / 49.4%),
+    rgb(255 255 255 / 49.8%)
+  );
+  --accent: light-dark(rgb(229 242 255), rgb(13 39 63));
+  --accent-foreground: var(--primary);
+  --destructive: light-dark(rgb(226 85 7), rgb(255 133 73));
+  --border: light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%));
+  --input: light-dark(
+    rgb(26 28 31 / 11.8%),
+    color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+  );
+  --ring: light-dark(rgb(51 156 255), rgb(131 195 255 / 76%));
+  --font-size-base: 14px;
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: 12.5px;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+  --color-background-primary: var(--background);
+  --color-text-primary: var(--foreground);
+  --color-border-secondary: var(--border);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--viz-font-weight-medium);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;main id=&quot;self-reviser-motion-v4&quot; aria-label=&quot;Self Reviser — accumulated institutional editing&quot;&gt;
+  &lt;div class=&quot;grain&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;
+  &lt;header class=&quot;masthead&quot;&gt;&lt;span&gt;Self Reviser&lt;/span&gt;&lt;span id=&quot;status&quot;&gt;Manuscript under continuous revision&lt;/span&gt;&lt;/header&gt;
+  &lt;section class=&quot;spread&quot;&gt;
+    &lt;article class=&quot;page&quot;&gt;&lt;header&gt;&lt;span&gt;Author's Self-Interpretation&lt;/span&gt;&lt;span id=&quot;writing-status&quot;&gt;Writing&lt;/span&gt;&lt;/header&gt;&lt;div class=&quot;draft-layout&quot;&gt;&lt;div id=&quot;draft&quot; class=&quot;manuscript&quot;&gt;&lt;/div&gt;&lt;aside class=&quot;margin&quot;&gt;&lt;p&gt;Institutional Queries&lt;/p&gt;&lt;div id=&quot;comments&quot;&gt;&lt;/div&gt;&lt;/aside&gt;&lt;/div&gt;&lt;/article&gt;
+&lt;article class=&quot;page&quot;&gt;&lt;header&gt;&lt;span&gt;System's Stabilised Interpretation&lt;/span&gt;&lt;span&gt;All traces retained&lt;/span&gt;&lt;/header&gt;&lt;div class=&quot;revision-body&quot;&gt;&lt;div class=&quot;pass&quot;&gt;&lt;span id=&quot;pass&quot;&gt;Synchronising source text&lt;/span&gt;&lt;span id=&quot;focus&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div id=&quot;revision&quot; class=&quot;manuscript revision&quot;&gt;&lt;/div&gt;&lt;div id=&quot;note&quot; class=&quot;note&quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/article&gt;
+  &lt;/section&gt;
+  &lt;footer&gt;&lt;span&gt;Black: author retained &nbsp; Grey: deleted &nbsp; Red: institutional intervention&lt;/span&gt;&lt;span id=&quot;cycle&quot;&gt;01 / 04&lt;/span&gt;&lt;/footer&gt;
+&lt;/main&gt;
+&lt;style&gt;
+#self-reviser-motion-v4{--ink:#20201d;--muted:#767168;--line:#d8d1c3;--paper:#fffdf8;--field:#e9e4da;--insert:#a5281e;--delete:#807b73;--note:#f7efcf;min-height:100vh;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;color:var(--ink);background:var(--field);font-family:Georgia,&quot;Noto Serif SC&quot;,&quot;Songti SC&quot;,serif;cursor:none}#self-reviser-motion-v4 *{box-sizing:border-box}.grain{position:absolute;inset:0;pointer-events:none;opacity:.13;background-image:radial-gradient(rgba(59,48,32,.25) .45px,transparent .7px);background-size:5px 5px}.masthead,#self-reviser-motion-v4 footer{position:relative;z-index:1;display:flex;justify-content:space-between;padding:18px 3.25vw;color:var(--muted);font:500 clamp(10px,.72vw,13px)/1.2 Inter,&quot;PingFang SC&quot;,sans-serif;letter-spacing:.12em}.masthead{border-bottom:1px solid var(--line)}#self-reviser-motion-v4 footer{border-top:1px solid var(--line)}.spread{position:relative;z-index:1;min-height:0;display:grid;grid-template-columns:1fr .98fr;gap:1.45vw;padding:2.6vh 3.25vw}.page{min-width:0;min-height:0;display:flex;flex-direction:column;background:var(--paper);border:1px solid #d3ccbd;box-shadow:0 18px 48px rgba(74,57,31,.1);transition:opacity 1s}.page&gt;header{display:flex;justify-content:space-between;padding:18px 23px 15px;border-bottom:1px solid var(--line);color:var(--muted);font:500 clamp(9px,.65vw,12px)/1.2 Inter,&quot;PingFang SC&quot;,sans-serif;letter-spacing:.1em}.draft-layout{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 27%;gap:clamp(20px,2.2vw,42px);padding:clamp(26px,4.8vh,68px) clamp(23px,3.4vw,58px)}.manuscript{font-size:clamp(18px,1.4vw,28px);line-height:1.78;letter-spacing:.012em;white-space:pre-wrap}.margin{border-left:1px solid var(--line);padding-left:clamp(12px,1.2vw,22px);overflow:hidden}.margin&gt;p{margin:2px 0 18px;color:var(--muted);font:500 clamp(9px,.62vw,11px)/1.25 Inter,&quot;PingFang SC&quot;,sans-serif;letter-spacing:.1em}.comment{position:relative;margin:0 0 17px;padding:10px 0 0 27px;border-top:1px solid var(--line);color:#45423c;font:400 clamp(11px,.77vw,15px)/1.52 Inter,&quot;PingFang SC&quot;,sans-serif}.comment:before{content:attr(data-number);position:absolute;top:9px;left:0;display:grid;width:18px;height:18px;place-items:center;border:1px solid #c8b771;border-radius:50%;color:#6d5706;background:var(--note);font-size:9px}.comment em{display:block;margin-top:8px;color:var(--muted);font-size:.84em;font-style:normal}.revision-body{flex:1;min-height:0;padding:clamp(26px,4.8vh,68px) clamp(27px,4.2vw,72px);display:flex;flex-direction:column}.pass{min-height:43px;margin-bottom:clamp(19px,2.8vh,36px);padding-bottom:13px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;font-family:Inter,&quot;PingFang SC&quot;,sans-serif}.pass span:first-child{color:#34312c;font-size:clamp(10px,.74vw,13px);font-weight:500;letter-spacing:.1em}.pass span:last-child{color:var(--muted);font-size:clamp(10px,.68vw,13px);text-align:right}.revision{flex:1;overflow:hidden;font-size:clamp(15px,1.08vw,22px);line-height:1.84;white-space:normal}.para{margin:0 0 1.12em}.revision del{color:var(--delete);text-decoration-thickness:1px}.revision ins{color:var(--insert);text-decoration:none;font-weight:500}.note{min-height:48px;margin-top:17px;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font:400 clamp(10px,.7vw,13px)/1.45 Inter,&quot;PingFang SC&quot;,sans-serif}.note b{display:block;margin-bottom:4px;color:#5c5850;font-size:.82em;font-weight:500;letter-spacing:.1em}@media(max-aspect-ratio:1/1){#self-reviser-motion-v4{min-height:100svh}.spread{grid-template-columns:1fr}.spread .page:last-child{display:none}}
+@import url(&#x27;https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500&amp;family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&amp;display=swap&#x27;);
+#self-reviser-motion-v4{grid-template-rows:1fr}.masthead,#self-reviser-motion-v4 footer,.page&gt;header{display:none}.spread{padding:7vh 5vw;gap:18px}.draft-layout,.revision-body{padding:clamp(30px,5vh,68px) clamp(28px,4vw,66px)}.manuscript,.revision{font-size:clamp(13px,.96vw,19px);line-height:1.82}.draft-anchor{background:transparent;border-bottom:1px solid #fff;padding:0}.draft-anchor::after{display:none}.draft-reading{background:rgba(255,255,255,.12);box-shadow:inset 0 -1px 0 #fff}.margin{border-left:0;padding-left:22px}.comment{padding:12px 13px 12px;border-color:#fff}.comment:before{display:none}.comment::after{left:-23px;width:22px;border-color:#fff}.comment em{color:#c7c7c7}.draft-self-delete{color:#b8b8b8}.draft-self-insert{color:#ef5f55}.para{margin-bottom:1.82em}
+&lt;/style&gt;
+&lt;script&gt;
+(()=&gt;{
+const root=document.getElementById(&#x27;self-reviser-motion-v4&#x27;),q=s=&gt;root.querySelector(s),els={draft:q(&#x27;#draft&#x27;),comments:q(&#x27;#comments&#x27;),revision:q(&#x27;#revision&#x27;),status:q(&#x27;#status&#x27;),writing:q(&#x27;#writing-status&#x27;),pass:q(&#x27;#pass&#x27;),focus:q(&#x27;#focus&#x27;),note:q(&#x27;#note&#x27;),cycle:q(&#x27;#cycle&#x27;),pages:[...root.querySelectorAll(&#x27;.page&#x27;)]};const fast=new URLSearchParams(location.search).get(&#x27;pace&#x27;)===&#x27;preview&#x27;,unit=fast?210:1000,wait=s=&gt;new Promise(r=&gt;setTimeout(r,s*unit)),esc=s=&gt;String(s).replaceAll(&#x27;&amp;&#x27;,&#x27;&amp;amp;&#x27;).replaceAll(&#x27;&lt;&#x27;,&#x27;&amp;lt;&#x27;).replaceAll(&#x27;&gt;&#x27;,&#x27;&amp;gt;&#x27;);
+// The V4 direction: many restrained, accumulated interventions; no sentence is wholly replaced.
+let reading=&#x27;&#x27;;function renderDraft(){let html=esc(draft).replaceAll(&#x27;\n&#x27;,&#x27;&lt;br&gt;&#x27;);if(reading&amp;&amp;draft.includes(reading))html=html.replace(esc(reading),`&lt;mark class=&quot;draft-reading&quot;&gt;${esc(reading)}&lt;/mark&gt;`);els.draft.innerHTML=html}
+const E=[
+{t:0,k:&#x27;w&#x27;,id:&#x27;a&#x27;,p:1,x:&#x27;I think I was trying to find a better way to say it. After the meeting, I stayed in the corridor for a while.&#x27;},
+{t:1.8,k:&#x27;e&#x27;,id:&#x27;a&#x27;,pass:&#x27;First pass / editing&#x27;,focus:&#x27;Local qualifications begin to accumulate.&#x27;,type:&#x27;Terminology standardisation&#x27;,old:&#x27;for a while&#x27;,next:&#x27;for a short period&#x27;},
+{t:2.7,k:&#x27;c&#x27;,src:&#x27;stayed in the corridor&#x27;,x:&#x27;Please specify the time and concrete setting of the staying.&#x27;},
+{t:3.0,k:&#x27;h&#x27;,old:&#x27;a better way to say it&#x27;,next:&#x27;a more accurate way to say it&#x27;},
+{t:3.3,k:&#x27;w&#x27;,id:&#x27;b&#x27;,p:1,x:&#x27;Everyone had already started packing up and saying goodbye, but I was still standing there. It felt as if taking two more steps would be slightly wrong, though I do not know why.&#x27;},
+{t:5.1,k:&#x27;e&#x27;,id:&#x27;b&#x27;,pass:&#x27;Initial clarification&#x27;,focus:&#x27;The source sentence remains recognisable.&#x27;,type:&#x27;Qualification&#x27;,old:&#x27;slightly wrong&#x27;,next:&#x27;a slight sense of discomfort&#x27;},
+{t:6.0,k:&#x27;e&#x27;,id:&#x27;b&#x27;,pass:&#x27;Initial clarification&#x27;,focus:&#x27;A small substitution shifts the narrative focus.&#x27;,type:&#x27;Formalisation&#x27;,old:&#x27;was still standing there&#x27;,next:&#x27;remained in the same place&#x27;},
+{t:6.9,k:&#x27;c&#x27;,src:&#x27;wrong&#x27;,x:&#x27;Please avoid ambiguous language, and distinguish observation from interpretation.&#x27;},
+{t:7.2,k:&#x27;h&#x27;,old:&#x27;slightly wrong&#x27;,next:&#x27;not quite appropriate&#x27;},
+{t:7.6,k:&#x27;w&#x27;,id:&#x27;c&#x27;,p:1,x:&#x27;I tell myself I am only waiting for the room to become a little emptier. But actually, I cannot say what it is that I am waiting for.&#x27;},
+{t:9.5,k:&#x27;e&#x27;,id:&#x27;c&#x27;,pass:&#x27;Second pass / clarification&#x27;,focus:&#x27;Uncertainty is converted into a discussable state.&#x27;,type:&#x27;Clarification&#x27;,old:&#x27;cannot say&#x27;,next:&#x27;am not yet able to clearly distinguish&#x27;},
+{t:10.4,k:&#x27;e&#x27;,id:&#x27;c&#x27;,pass:&#x27;Conceptual definition&#x27;,focus:&#x27;Editing does not erase the author’s sentence.&#x27;,type:&#x27;Remove redundancy&#x27;,old:&#x27;only &#x27;,next:&#x27;&#x27;},
+{t:11.2,k:&#x27;c&#x27;,src:&#x27;waiting for&#x27;,x:&#x27;Please define the object of “waiting” and explain its relation to leaving.&#x27;},
+{t:11.5,k:&#x27;h&#x27;,old:&#x27;the room to become a little emptier&#x27;,next:&#x27;there to be fewer people&#x27;},
+{t:12.0,k:&#x27;w&#x27;,id:&#x27;d&#x27;,p:2,x:&#x27;This seems to happen whenever a discussion has just ended. After everyone disperses, I pretend that I am still thinking about what was said.&#x27;},
+{t:14.0,k:&#x27;e&#x27;,id:&#x27;d&#x27;,pass:&#x27;Situational organisation&#x27;,focus:&#x27;A concrete scene gradually becomes a repeatable situation.&#x27;,type:&#x27;Standardisation&#x27;,old:&#x27;whenever a discussion has just ended&#x27;,next:&#x27;during the transitional phase following a discussion&#x27;},
+{t:15.0,k:&#x27;e&#x27;,id:&#x27;d&#x27;,pass:&#x27;Situational organisation&#x27;,focus:&#x27;The narrative is retained while its emotionality is compressed.&#x27;,type:&#x27;Formalisation&#x27;,old:&#x27;After everyone disperses&#x27;,next:&#x27;After others begin to leave&#x27;},
+{t:16.1,k:&#x27;w&#x27;,id:&#x27;e&#x27;,p:2,x:&#x27;But perhaps that is not it. It may not be that I do not want to go back in immediately; I also feel that I should not keep staying outside. Even writing this still feels wrong.&#x27;},
+{t:18.2,k:&#x27;e&#x27;,id:&#x27;e&#x27;,pass:&#x27;Relational qualification&#x27;,focus:&#x27;The contradiction is arranged as parallel action tendencies.&#x27;,type:&#x27;Categorisation&#x27;,old:&#x27;do not want to go back in immediately&#x27;,next:&#x27;maintain a delay in re-entering the interaction&#x27;},
+{t:19.3,k:&#x27;e&#x27;,id:&#x27;e&#x27;,pass:&#x27;Relational qualification&#x27;,focus:&#x27;Interpretive language begins to stabilise.&#x27;,type:&#x27;Formalisation&#x27;,old:&#x27;should not keep staying outside&#x27;,next:&#x27;continued staying lacks an acceptable justification&#x27;},
+{t:20.3,k:&#x27;c&#x27;,src:&#x27;go back in&#x27;,x:&#x27;Please maintain terminological consistency: distinguish “re-entering” from “continued staying”.&#x27;},
+{t:21.2,k:&#x27;w&#x27;,id:&#x27;f&#x27;,p:2,x:&#x27;Later I realised that this was not the first time. After several discussions, I have always left a little more slowly. But is it really the same every time?&#x27;},
+{t:23.2,k:&#x27;e&#x27;,id:&#x27;f&#x27;,pass:&#x27;Pattern recognition&#x27;,focus:&#x27;Repetition slowly emerges from a single feeling.&#x27;,type:&#x27;Pattern recognition&#x27;,old:&#x27;not the first time&#x27;,next:&#x27;not an isolated occurrence&#x27;},
+{t:24.2,k:&#x27;e&#x27;,id:&#x27;f&#x27;,pass:&#x27;Pattern recognition&#x27;,focus:&#x27;Institutional language advances only one step.&#x27;,type:&#x27;Qualification&#x27;,old:&#x27;left a little more slowly&#x27;,next:&#x27;delayed leaving&#x27;},
+{t:25.2,k:&#x27;w&#x27;,id:&#x27;g&#x27;,p:2,x:&#x27;I do not know whether this is a problem. The more I write, the more I feel that perhaps I am simply making a very small thing too complicated.&#x27;},
+{t:27.2,k:&#x27;e&#x27;,id:&#x27;g&#x27;,pass:&#x27;Provisional interpretation&#x27;,focus:&#x27;The unknown is retained while being made readable.&#x27;,type:&#x27;Formalisation&#x27;,old:&#x27;do not know whether this is a problem&#x27;,next:&#x27;does not yet constitute a clearly defined problem&#x27;},
+{t:28.2,k:&#x27;e&#x27;,id:&#x27;g&#x27;,pass:&#x27;Provisional interpretation&#x27;,focus:&#x27;Change comes from accumulation rather than conclusion.&#x27;,type:&#x27;Clarification&#x27;,old:&#x27;making a very small thing too complicated&#x27;,next:&#x27;placing excessive interpretive weight on a low-intensity situation&#x27;},
+{t:29.6,k:&#x27;c&#x27;,src:&#x27;whether this is a problem&#x27;,x:&#x27;Please specify the scope of this reaction; avoid presenting a temporary observation as a definite cause.&#x27;},
+{t:32.6,k:&#x27;w&#x27;,id:&#x27;i&#x27;,p:2,x:&#x27;But having written this far, I feel that it is not quite that. Perhaps I am not waiting for a particular moment; whenever I am about to leave, I suddenly do not know what I had been doing.&#x27;},
+{t:35.8,k:&#x27;c&#x27;,src:&#x27;not quite that&#x27;,x:&#x27;Please distinguish the current observation from the earlier interpretation, and explain how this contradiction changes the narrative.&#x27;},
+{t:30.4,k:&#x27;w&#x27;,id:&#x27;h&#x27;,p:2,x:&#x27;Later I thought that perhaps I did not want to avoid the discussion; I simply did not know when I was allowed to go back in.&#x27;},
+{t:31.0,k:&#x27;i&#x27;,p:2,pass:&#x27;Editorial note&#x27;,focus:&#x27;A short annotation rather than an external diagnosis.&#x27;,type:&#x27;Provisional summary&#x27;,x:&#x27;This narrative may provisionally be organised as: a recurring but not yet stably explained response of staying, emerging around leaving and re-entering after a social interaction ends.&#x27;,reason:&#x27;The summary only integrates temporal, situational, and repetitive cues already present in the manuscript.&#x27;},
+{t:35.0,k:&#x27;p&#x27;,id:&#x27;a&#x27;,pass:&#x27;System still reviewing&#x27;,focus:&#x27;The current classification remains provisional.&#x27;},
+{t:38.0,k:&#x27;e&#x27;,id:&#x27;a&#x27;,pass:&#x27;Third pass / interpretation&#x27;,focus:&#x27;The system returns to an earlier narrative and redefines the temporal scale of experience.&#x27;,type:&#x27;Temporal scope&#x27;,old:&#x27;After the meeting&#x27;,next:&#x27;Following the end of discussions and other social interactions&#x27;},
+{t:39.2,k:&#x27;e&#x27;,id:&#x27;b&#x27;,pass:&#x27;Second-pass qualification&#x27;,focus:&#x27;The source sentence’s personal tone remains retained.&#x27;,type:&#x27;Terminological consistency&#x27;,old:&#x27;Everyone had already started packing up and saying goodbye&#x27;,next:&#x27;Others had already begun to leave&#x27;},
+{t:40.6,k:&#x27;p&#x27;,id:&#x27;c&#x27;,pass:&#x27;Continued review&#x27;,focus:&#x27;Unspecified concepts may still be further organised.&#x27;},
+{t:43.0,k:&#x27;e&#x27;,id:&#x27;c&#x27;,pass:&#x27;Third-pass organisation&#x27;,focus:&#x27;An everyday space is redefined as an interaction environment.&#x27;,type:&#x27;Conceptual definition&#x27;,old:&#x27;the room to become a little emptier&#x27;,next:&#x27;the meeting space to have a lower interaction density&#x27;},
+{t:44.4,k:&#x27;e&#x27;,id:&#x27;d&#x27;,pass:&#x27;Third-pass organisation&#x27;,focus:&#x27;An early sentence receives an analytical qualification again.&#x27;,type:&#x27;Observation / interpretation distinction&#x27;,old:&#x27;I pretend that I am still thinking about what was said&#x27;,next:&#x27;I maintain a surface attention to the content of the preceding discussion&#x27;},
+{t:46.0,k:&#x27;e&#x27;,id:&#x27;e&#x27;,pass:&#x27;Fourth-pass interpretation&#x27;,focus:&#x27;Subjective hesitation is converted into a provisional statement.&#x27;,type:&#x27;Qualification&#x27;,old:&#x27;It may not be that&#x27;,next:&#x27;This state may provisionally&#x27;},
+{t:47.0,k:&#x27;e&#x27;,id:&#x27;h&#x27;,pass:&#x27;Fourth pass / stabilised interpretation&#x27;,focus:&#x27;The system organises self-judgement into a manageable temporal relation.&#x27;,type:&#x27;Interpretive qualification&#x27;,old:&#x27;did not know when I was allowed to go back in&#x27;,next:&#x27;was not yet able to determine an appropriate point for re-entering the interaction&#x27;},
+{t:50.6,k:&#x27;e&#x27;,id:&#x27;i&#x27;,pass:&#x27;Fourth pass / stabilised interpretation&#x27;,focus:&#x27;The author’s contradiction is retained as interpretable material.&#x27;,type:&#x27;Interpretive organisation&#x27;,old:&#x27;whenever I am about to leave, I suddenly do not know what I had been doing&#x27;,next:&#x27;at the point of leaving, temporarily lose orientation toward the meaning of prior actions&#x27;,reason:&#x27;The system does not resolve the contradiction, but stabilises it as a response open to further interpretation.&#x27;},
+{t:47.4,k:&#x27;e&#x27;,id:&#x27;f&#x27;,pass:&#x27;Fourth-pass interpretation&#x27;,focus:&#x27;Repetition gradually acquires analytical stability.&#x27;,type:&#x27;Scope definition&#x27;,old:&#x27;After several discussions&#x27;,next:&#x27;Across several similar post-discussion situations&#x27;},
+{t:49.0,k:&#x27;i&#x27;,p:2,pass:&#x27;Fourth pass / stabilised interpretation&#x27;,focus:&#x27;The interpretation gains temporary priority without becoming a conclusion.&#x27;,type:&#x27;Interpretive framework&#x27;,x:&#x27;This continued staying may currently be understood as a response through which an individual repeatedly negotiates leaving, re-entering, and an acceptable position after social interaction ends.&#x27;,reason:&#x27;The system organises experience through existing cues without converting it into a diagnosis.&#x27;},
+{t:54.0,k:&#x27;i&#x27;,p:2,pass:&#x27;Current version / still subject to revision&#x27;,focus:&#x27;The system pauses but does not complete the manuscript.&#x27;,type:&#x27;Follow-up note&#x27;,x:&#x27;The current interpretation remains provisional; future revisions may reorganise this interpretive framework.&#x27;,reason:&#x27;The original experience remains, but is being covered by continuously accumulating interpretations.&#x27;},
+{t:57.0,k:&#x27;w&#x27;,id:&#x27;j&#x27;,p:2,x:&#x27;I came back to those earlier sentences and still feel that they do not reach the feeling that first made me stop. But if it is not these reasons, then what is it?&#x27;},
+{t:61.0,k:&#x27;c&#x27;,src:&#x27;the feeling that first made me stop&#x27;,x:&#x27;Please explain the relation between this feeling and the current interpretive framework; avoid undefined references.&#x27;},
+{t:62.0,k:&#x27;w&#x27;,id:&#x27;k&#x27;,p:2,x:&#x27;If I have to make it clear, I think perhaps I was afraid that others would think I had not been listening. But writing it this way makes it seem as though I am finding myself an explanation that is too simple.&#x27;},
+{t:65.0,k:&#x27;e&#x27;,id:&#x27;j&#x27;,pass:&#x27;Fifth pass / re-interpretation&#x27;,focus:&#x27;The system incorporates new self-doubt into the existing interpretive framework.&#x27;,type:&#x27;Interpretive linkage&#x27;,old:&#x27;do not reach the feeling that first made me stop&#x27;,next:&#x27;do not yet sufficiently encompass the initial subjective feeling that prompted staying&#x27;,reason:&#x27;The unexplained feeling is transformed into a part still to be added to the existing framework.&#x27;},
+{t:69.0,k:&#x27;e&#x27;,id:&#x27;k&#x27;,pass:&#x27;Fifth pass / re-interpretation&#x27;,focus:&#x27;The author’s self-doubt is reorganised as an interpretable relation.&#x27;,type:&#x27;Causal qualification&#x27;,old:&#x27;finding myself an explanation that is too simple&#x27;,next:&#x27;prematurely placing an uncertain feeling within a single explanatory mechanism&#x27;,reason:&#x27;The system converts distrust in one’s own explanation into a manageable causal limitation.&#x27;},
+{t:70.0,k:&#x27;i&#x27;,p:2,pass:&#x27;Fifth pass / continued review&#x27;,focus:&#x27;Interpretation accumulates further without forming a final version.&#x27;,type:&#x27;Framework extension&#x27;,x:&#x27;At this stage, this response may be regarded as a process through which an individual continuously coordinates the timing of action, position, and intelligibility after an interaction ends; this organisation may still change in subsequent readings.&#x27;,reason:&#x27;The system extends the scope of interpretation while retaining its provisional status.&#x27;}
+];
+let draft=&#x27;&#x27;,segs=new Map(),order=[],cursor=&#x27;&#x27;;function clearCursors(){for(const s of segs.values())s.h=s.h.replaceAll(&#x27;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&#x27;,&#x27;&#x27;)}function render(){const groups={};for(const id of order){const s=segs.get(id);if(!groups[s.p])groups[s.p]=[];groups[s.p].push(s.h+(id===cursor?&#x27;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&#x27;:&#x27;&#x27;));}els.revision.innerHTML=Object.values(groups).map(parts=&gt;&#x27;&lt;p class=&quot;para&quot;&gt;&#x27;+parts.join(&#x27;&#x27;)+&#x27;&lt;/p&gt;&#x27;).join(&#x27;&#x27;);}async function write(e){els.writing.textContent=&#x27;书写 / 同步修订&#x27;;if(e.p===2&amp;&amp;!draft.endsWith(&#x27;\n\n&#x27;))draft+=&#x27;\n\n&#x27;;segs.set(e.id,{p:e.p,h:&#x27;&#x27;});order.push(e.id);for(const ch of e.x){draft+=ch;segs.get(e.id).h+=esc(ch);els.draft.textContent=draft;render();await wait(.06)}}async function edit(e){const s=segs.get(e.id),o=esc(e.old);if(!s||!s.h.includes(o))return;clearCursors();const index=s.h.indexOf(o),before=s.h.slice(0,index),after=s.h.slice(index+o.length);let removed=&#x27;&#x27;,inserted=&#x27;&#x27;;cursor=&#x27;&#x27;;els.status.textContent=&#x27;制度性解释 / 正在重组&#x27;;els.pass.textContent=e.pass;els.focus.textContent=e.focus;els.note.innerHTML=`&lt;b&gt;${esc(e.type)}&lt;/b&gt;${esc(e.reason||&#x27;该修改保留原句的结构与叙述位置。&#x27;)}`;for(const ch of e.old){removed+=esc(ch);s.h=before+&#x27;&lt;del&gt;&#x27;+removed+&#x27;&lt;/del&gt;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&#x27;+after;render();await wait(.07)}for(const ch of e.next||&#x27;&#x27;){inserted+=esc(ch);s.h=before+&#x27;&lt;del&gt;&#x27;+removed+&#x27;&lt;/del&gt;&lt;ins&gt;&#x27;+inserted+&#x27;&lt;/ins&gt;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&#x27;+after;render();await wait(.11)}s.h=before+&#x27;&lt;del&gt;&#x27;+removed+&#x27;&lt;/del&gt;&#x27;+(inserted?&#x27;&lt;ins&gt;&#x27;+inserted+&#x27;&lt;/ins&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&#x27;+after;render()}function pause(e){clearCursors();cursor=e.id;els.status.textContent=&#x27;系统仍在检视&#x27;;els.pass.textContent=e.pass;els.focus.textContent=e.focus;els.note.innerHTML=&#x27;&lt;b&gt;未完成&lt;/b&gt;当前解释仍可被进一步组织。&#x27;;render()}function comment(e){const x=document.createElement(&#x27;div&#x27;);x.className=&#x27;comment&#x27;;x.dataset.number=els.comments.children.length+1;x.innerHTML=`${esc(e.x)}&lt;em&gt;来源：“${esc(e.src)}”&lt;/em&gt;`;els.comments.append(x)}async function insert(e){clearCursors();const id=&#x27;n&#x27;+order.length;segs.set(id,{p:e.p,h:&#x27;&lt;ins&gt;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&lt;/ins&gt;&#x27;});order.push(id);cursor=&#x27;&#x27;;els.pass.textContent=e.pass;els.focus.textContent=e.focus;els.note.innerHTML=`&lt;b&gt;${esc(e.type)}&lt;/b&gt;${esc(e.reason)}`;let text=&#x27;&#x27;;for(const ch of e.x){text+=esc(ch);segs.get(id).h=&#x27;&lt;ins&gt;&#x27;+text+&#x27;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&lt;/ins&gt;&#x27;;render();await wait(.11)}}async function reset(){els.status.textContent=&#x27;文稿重新构成中&#x27;;els.pages.forEach(x=&gt;x.style.opacity=&#x27;.15&#x27;);await wait(2.2);draft=&#x27;&#x27;;segs=new Map();order=[];cursor=&#x27;&#x27;;els.draft.textContent=&#x27;&#x27;;els.comments.innerHTML=&#x27;&#x27;;els.revision.innerHTML=&#x27;&#x27;;els.pass.textContent=&#x27;原文同步中&#x27;;els.focus.textContent=&#x27;&#x27;;els.note.textContent=&#x27;&#x27;;els.pages.forEach(x=&gt;x.style.opacity=&#x27;1&#x27;);await wait(1)}async function play(){let n=1;while(true){els.cycle.textContent=`${String(n).padStart(2,&#x27;0&#x27;)} / 04`;await Promise.all(E.map(e=&gt;wait(e.t).then(()=&gt;e.k===&#x27;w&#x27;?write(e):e.k===&#x27;e&#x27;?edit(e):e.k===&#x27;i&#x27;?insert(e):e.k===&#x27;p&#x27;?pause(e):comment(e))));await wait(17);await reset();n=n===4?1:n+1}}document.addEventListener(&#x27;keydown&#x27;,e=&gt;{if(e.key.toLowerCase()===&#x27;f&#x27;)root.requestFullscreen?.()});root.addEventListener(&#x27;dblclick&#x27;,()=&gt;root.requestFullscreen?.());play();
+async function comment(e){reading=e.src;renderDraft();await wait(.5);const x=document.createElement(&#x27;div&#x27;);x.className=&#x27;comment&#x27;;x.dataset.number=els.comments.children.length+1;x.innerHTML=`${esc(e.x)}&lt;em&gt;来源：“${esc(e.src)}”&lt;/em&gt;`;els.comments.append(x);await wait(.3);reading=&#x27;&#x27;;renderDraft()}
+async function play(){let n=1;while(true){let author=Promise.resolve();els.cycle.textContent=`${String(n).padStart(2,&#x27;0&#x27;)} / 05`;await Promise.all(E.map(e=&gt;wait(e.t).then(()=&gt;{if(e.k===&#x27;w&#x27;||e.k===&#x27;c&#x27;){author=author.then(()=&gt;e.k===&#x27;w&#x27;?write(e):comment(e));return author}return e.k===&#x27;e&#x27;?edit(e):e.k===&#x27;i&#x27;?insert(e):pause(e)})));await author;await wait(17);await reset();n=n===5?1:n+1}}
+function setFocus(area){els.pages.forEach((page,index)=&gt;page.classList.toggle(&#x27;backgrounded&#x27;,(area===&#x27;draft&#x27;||area===&#x27;comment&#x27;)?index===1:index===0))}
+async function play(){let cycle=1;const skipped=new Set([39.2,44.4,47.4]);while(true){let author=Promise.resolve(),system=Promise.resolve();els.cycle.textContent=`${String(cycle).padStart(2,&#x27;0&#x27;)} / 05`;await Promise.all(E.map(event=&gt;wait(event.t).then(()=&gt;{if(event.k===&#x27;w&#x27;||event.k===&#x27;c&#x27;){author=author.then(async()=&gt;{setFocus(event.k===&#x27;c&#x27;?&#x27;comment&#x27;:&#x27;draft&#x27;);return event.k===&#x27;w&#x27;?write(event):comment(event)});return author}if(event.k===&#x27;e&#x27;&amp;&amp;skipped.has(event.t))return;system=system.then(async()=&gt;{await author;setFocus(&#x27;revision&#x27;);await wait(event.t&gt;=46?1.5:.55);return event.k===&#x27;e&#x27;?edit(event):event.k===&#x27;i&#x27;?insert(event):pause(event)});return system})));await author;await system;await wait(17);els.pages.forEach(page=&gt;page.classList.remove(&#x27;backgrounded&#x27;));await reset();cycle=cycle===5?1:cycle+1}}
+let anchors=[];function renderDraft(){let html=esc(draft).replaceAll(&#x27;\n&#x27;,&#x27;&lt;br&gt;&#x27;);anchors.forEach(anchor=&gt;{const classes=`draft-anchor${reading===anchor.text?&#x27; draft-reading&#x27;:&#x27;&#x27;}`;html=html.replace(esc(anchor.text),`&lt;mark class=&quot;${classes}&quot; data-anchor=&quot;${anchor.number}&quot;&gt;${esc(anchor.text)}&lt;/mark&gt;`)});els.draft.innerHTML=html}async function comment(e){reading=e.src;renderDraft();await wait(.5);const number=els.comments.children.length+1;anchors.push({text:e.src,number});renderDraft();const x=document.createElement(&#x27;div&#x27;);x.className=&#x27;comment&#x27;;x.dataset.number=number;x.innerHTML=`${esc(e.x)}&lt;em&gt;来源：“${esc(e.src)}”&lt;/em&gt;`;els.comments.append(x);await wait(.3);reading=&#x27;&#x27;;renderDraft()}async function play(){let cycle=1;const skipped=new Set([39.2,44.4,47.4]);while(true){let author=Promise.resolve(),system=Promise.resolve();els.cycle.textContent=`${String(cycle).padStart(2,&#x27;0&#x27;)} / 05`;await Promise.all(E.map(event=&gt;wait(event.t).then(()=&gt;{if(event.k===&#x27;w&#x27;||event.k===&#x27;c&#x27;){author=author.then(async()=&gt;{setFocus(event.k===&#x27;c&#x27;?&#x27;comment&#x27;:&#x27;draft&#x27;);return event.k===&#x27;w&#x27;?write(event):comment(event)});return author}if(event.k===&#x27;e&#x27;&amp;&amp;skipped.has(event.t))return;system=system.then(async()=&gt;{await author;setFocus(&#x27;revision&#x27;);await wait(event.t&gt;=46?2.4:.9);return event.k===&#x27;e&#x27;?edit(event):event.k===&#x27;i&#x27;?insert(event):pause(event)});return system})));await author;await system;await wait(17);els.pages.forEach(page=&gt;page.classList.remove(&#x27;backgrounded&#x27;));await reset();anchors=[];cycle=cycle===5?1:cycle+1}}
+async function write(e){els.writing.textContent=&#x27;书写 / 同步修订&#x27;;if(e.p===2&amp;&amp;!draft.endsWith(&#x27;\n\n&#x27;))draft+=&#x27;\n\n&#x27;;segs.set(e.id,{p:e.p,h:&#x27;&#x27;});order.push(e.id);for(const ch of e.x){draft+=ch;segs.get(e.id).h+=esc(ch);renderDraft();render();await wait(.06)}}
+let humanView=&#x27;&#x27;;function renderDraft(){let html=humanView||esc(draft).replaceAll(&#x27;\n&#x27;,&#x27;&lt;br&gt;&#x27;);if(!humanView)anchors.forEach(anchor=&gt;{const classes=`draft-anchor${reading===anchor.text?&#x27; draft-reading&#x27;:&#x27;&#x27;}`;html=html.replace(esc(anchor.text),`&lt;mark class=&quot;${classes}&quot; data-anchor=&quot;${anchor.number}&quot;&gt;${esc(anchor.text)}&lt;/mark&gt;`)});els.draft.innerHTML=html}async function humanRevise(e){const index=draft.indexOf(e.old);if(index&lt;0)return;const before=draft.slice(0,index),after=draft.slice(index+e.old.length);await wait(.35);let removed=&#x27;&#x27;;for(const ch of e.old){removed+=esc(ch);humanView=esc(before)+`&lt;del class=&quot;draft-self-delete&quot;&gt;${removed}&lt;/del&gt;&lt;span class=&quot;draft-self-cursor&quot;&gt;&lt;/span&gt;`+esc(after).replaceAll(&#x27;\n&#x27;,&#x27;&lt;br&gt;&#x27;);renderDraft();await wait(.06)}let added=&#x27;&#x27;;for(const ch of e.next){added+=esc(ch);humanView=esc(before)+added+`&lt;span class=&quot;draft-self-cursor&quot;&gt;&lt;/span&gt;`+esc(after).replaceAll(&#x27;\n&#x27;,&#x27;&lt;br&gt;&#x27;);renderDraft();await wait(.07)}draft=before+e.next+after;humanView=&#x27;&#x27;;renderDraft()}async function play(){let cycle=1;const skipped=new Set([39.2,44.4,47.4]);while(true){let author=Promise.resolve(),system=Promise.resolve();els.cycle.textContent=`${String(cycle).padStart(2,&#x27;0&#x27;)} / 05`;await Promise.all(E.map(event=&gt;wait(event.t).then(()=&gt;{if([&#x27;w&#x27;,&#x27;c&#x27;,&#x27;h&#x27;].includes(event.k)){author=author.then(async()=&gt;{setFocus(event.k===&#x27;c&#x27;?&#x27;comment&#x27;:&#x27;draft&#x27;);return event.k===&#x27;w&#x27;?write(event):event.k===&#x27;c&#x27;?comment(event):humanRevise(event)});return author}if(event.k===&#x27;e&#x27;&amp;&amp;skipped.has(event.t))return;system=system.then(async()=&gt;{await author;setFocus(&#x27;revision&#x27;);await wait(event.t&gt;=46?2.4:.9);return event.k===&#x27;e&#x27;?edit(event):event.k===&#x27;i&#x27;?insert(event):pause(event)});return system})));await author;await system;await wait(17);els.pages.forEach(page=&gt;page.classList.remove(&#x27;backgrounded&#x27;));await reset();anchors=[];humanView=&#x27;&#x27;;cycle=cycle===5?1:cycle+1}}
+let draftTyping=false;function renderDraft(){let html=humanView||esc(draft).replaceAll(&#x27;\n&#x27;,&#x27;&lt;br&gt;&#x27;);if(!humanView)anchors.forEach(anchor=&gt;{const classes=`draft-anchor${reading===anchor.text?&#x27; draft-reading&#x27;:&#x27;&#x27;}`;html=html.replace(esc(anchor.text),`&lt;mark class=&quot;${classes}&quot; data-anchor=&quot;${anchor.number}&quot;&gt;${esc(anchor.text)}&lt;/mark&gt;`)});if(draftTyping&amp;&amp;!humanView)html+=&#x27;&lt;span class=&quot;draft-self-cursor&quot;&gt;&lt;/span&gt;&#x27;;els.draft.innerHTML=html}async function write(e){els.writing.textContent=&#x27;书写 / 同步修订&#x27;;if(e.p===2&amp;&amp;!draft.endsWith(&#x27;\n\n&#x27;))draft+=&#x27;\n\n&#x27;;segs.set(e.id,{p:e.p,h:&#x27;&#x27;});order.push(e.id);draftTyping=true;for(let i=0;i&lt;e.x.length;i+=1){const ch=e.x[i];draft+=ch;segs.get(e.id).h+=esc(ch);renderDraft();render();let delay=.052+(ch.charCodeAt(0)%3)*.012;if(/[。！？]/.test(ch))delay=.55;else if(/[，、】【、]/.test(ch))delay=.19;else if(i%13===0)delay=.13;await wait(delay)}draftTyping=false;renderDraft()}
+async function humanRevise(e){const index=draft.indexOf(e.old);if(index&lt;0)return;const before=draft.slice(0,index),after=draft.slice(index+e.old.length);await wait(.35);let removed=&#x27;&#x27;;for(const ch of e.old){removed+=esc(ch);humanView=esc(before)+`&lt;del class=&quot;draft-self-delete&quot;&gt;${removed}&lt;/del&gt;&lt;span class=&quot;draft-self-cursor&quot;&gt;&lt;/span&gt;`+esc(after).replaceAll(&#x27;\n&#x27;,&#x27;&lt;br&gt;&#x27;);renderDraft();await wait(.06)}let added=&#x27;&#x27;;for(const ch of e.next){added+=esc(ch);humanView=esc(before)+`&lt;ins class=&quot;draft-self-insert&quot;&gt;${added}&lt;/ins&gt;&lt;span class=&quot;draft-self-cursor&quot;&gt;&lt;/span&gt;`+esc(after).replaceAll(&#x27;\n&#x27;,&#x27;&lt;br&gt;&#x27;);renderDraft();await wait(.07)}draft=before+e.next+after;humanView=&#x27;&#x27;;renderDraft()}
+async function humanRevise(e){const index=draft.indexOf(e.old);if(index&lt;0)return;const before=draft.slice(0,index),after=draft.slice(index+e.old.length);await wait(.55);let removed=&#x27;&#x27;;for(const ch of e.old){removed+=esc(ch);humanView=esc(before)+`&lt;del class=&quot;draft-self-delete&quot;&gt;${removed}&lt;/del&gt;&lt;span class=&quot;draft-self-cursor&quot;&gt;&lt;/span&gt;`+esc(after).replaceAll(&#x27;\n&#x27;,&#x27;&lt;br&gt;&#x27;);renderDraft();await wait(.1)}let added=&#x27;&#x27;;for(const ch of e.next){added+=esc(ch);humanView=esc(before)+`&lt;ins class=&quot;draft-self-insert&quot;&gt;${added}&lt;/ins&gt;&lt;span class=&quot;draft-self-cursor&quot;&gt;&lt;/span&gt;`+esc(after).replaceAll(&#x27;\n&#x27;,&#x27;&lt;br&gt;&#x27;);renderDraft();await wait(.13)}draft=before+e.next+after;humanView=&#x27;&#x27;;renderDraft()}
+async function write(e){els.writing.textContent=&#x27;Writing / synchronised revision&#x27;;if(e.p===2&amp;&amp;!draft.endsWith(&#x27;\n\n&#x27;))draft+=&#x27;\n\n&#x27;;segs.set(e.id,{p:e.p,h:&#x27;&#x27;});order.push(e.id);draftTyping=true;for(let i=0;i&lt;e.x.length;i+=1){const ch=e.x[i];draft+=ch;segs.get(e.id).h+=esc(ch);renderDraft();render();let delay=.052+(ch.charCodeAt(0)%3)*.012;if(/[.!?]/.test(ch))delay=.55;else if(/[,;:]/.test(ch))delay=.19;else if(i%13===0)delay=.13;await wait(delay)}draftTyping=false;renderDraft()}
+async function comment(e){reading=e.src;renderDraft();await wait(.5);const number=els.comments.children.length+1;anchors.push({text:e.src,number});renderDraft();const x=document.createElement(&#x27;div&#x27;);x.className=&#x27;comment&#x27;;x.dataset.number=number;x.innerHTML=`${esc(e.x)}&lt;em&gt;Source: “${esc(e.src)}”&lt;/em&gt;`;els.comments.append(x);await wait(.3);reading=&#x27;&#x27;;renderDraft()}
+async function edit(e){const s=segs.get(e.id),o=esc(e.old);if(!s||!s.h.includes(o))return;clearCursors();const index=s.h.indexOf(o),before=s.h.slice(0,index),after=s.h.slice(index+o.length);let removed=&#x27;&#x27;,inserted=&#x27;&#x27;;cursor=&#x27;&#x27;;els.status.textContent=&#x27;Institutional interpretation / reorganising&#x27;;els.pass.textContent=e.pass;els.focus.textContent=e.focus;els.note.innerHTML=`&lt;b&gt;${esc(e.type)}&lt;/b&gt;${esc(e.reason||&#x27;This revision retains the source sentence’s structure and narrative position.&#x27;)}`;for(const ch of e.old){removed+=esc(ch);s.h=before+&#x27;&lt;del&gt;&#x27;+removed+&#x27;&lt;/del&gt;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&#x27;+after;render();await wait(.07)}for(const ch of e.next||&#x27;&#x27;){inserted+=esc(ch);s.h=before+&#x27;&lt;del&gt;&#x27;+removed+&#x27;&lt;/del&gt;&lt;ins&gt;&#x27;+inserted+&#x27;&lt;/ins&gt;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&#x27;+after;render();await wait(.11)}s.h=before+&#x27;&lt;del&gt;&#x27;+removed+&#x27;&lt;/del&gt;&#x27;+(inserted?&#x27;&lt;ins&gt;&#x27;+inserted+&#x27;&lt;/ins&gt;&#x27;:&#x27;&#x27;)+&#x27;&lt;span class=&quot;cursor&quot;&gt;&lt;/span&gt;&#x27;+after;render()}
+function pause(e){clearCursors();cursor=e.id;els.status.textContent=&#x27;System still reviewing&#x27;;els.pass.textContent=e.pass;els.focus.textContent=e.focus;els.note.innerHTML=&#x27;&lt;b&gt;Unfinished&lt;/b&gt;The current interpretation may still be further organised.&#x27;;render()}
+async function reset(){els.status.textContent=&#x27;Manuscript being reconstituted&#x27;;els.pages.forEach(x=&gt;x.style.opacity=&#x27;.15&#x27;);await wait(2.2);draft=&#x27;&#x27;;segs=new Map();order=[];cursor=&#x27;&#x27;;els.draft.textContent=&#x27;&#x27;;els.comments.innerHTML=&#x27;&#x27;;els.revision.innerHTML=&#x27;&#x27;;els.pass.textContent=&#x27;Synchronising source text&#x27;;els.focus.textContent=&#x27;&#x27;;els.note.textContent=&#x27;&#x27;;els.pages.forEach(x=&gt;x.style.opacity=&#x27;1&#x27;);await wait(1)}
+async function play(){let cycle=1;const skipped=new Set([39.2,44.4,47.4]);while(true){let author=Promise.resolve(),system=Promise.resolve();els.cycle.textContent=`${String(cycle).padStart(2,&#x27;0&#x27;)} / 05`;await Promise.all(E.map(event=&gt;wait(event.t).then(()=&gt;{if([&#x27;w&#x27;,&#x27;c&#x27;,&#x27;h&#x27;].includes(event.k)){author=author.then(async()=&gt;{setFocus(event.k===&#x27;c&#x27;?&#x27;comment&#x27;:&#x27;draft&#x27;);return event.k===&#x27;w&#x27;?write(event):event.k===&#x27;c&#x27;?comment(event):humanRevise(event)});return author}if(event.k===&#x27;e&#x27;&amp;&amp;skipped.has(event.t))return;const authorAtEvent=author;system=system.then(async()=&gt;{await authorAtEvent;setFocus(&#x27;revision&#x27;);await wait(event.t&gt;=46?2.4:.9);return event.k===&#x27;e&#x27;?edit(event):event.k===&#x27;i&#x27;?insert(event):pause(event)});return system})));await author;await system;await wait(17);els.pages.forEach(page=&gt;page.classList.remove(&#x27;backgrounded&#x27;));await reset();anchors=[];humanView=&#x27;&#x27;;cycle=cycle===5?1:cycle+1}}
+})();
+&lt;/script&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>

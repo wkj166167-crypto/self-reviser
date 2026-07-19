@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Author_024.docx - Microsoft Word</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main id="app" class="workspace" data-state="empty">
+      <header class="word-chrome">
+        <div class="word-titlebar">
+          <div class="quick-access"><i>W</i><span>▣</span><span>↶</span><span>↷</span></div>
+          <span>Author_024.docx - Microsoft Word</span>
+          <div class="window-controls"><b>—</b><b>□</b><b>×</b></div>
+        </div>
+        <nav class="word-tabs"><b>File</b><span>Home</span><span>Insert</span><span>Page Layout</span><span>References</span><span>Mailings</span><span class="active">Review</span><span>View</span></nav>
+        <div class="word-ribbon">
+          <section class="ribbon-group paste"><strong>▣</strong><span>Paste</span><em>Clipboard</em></section>
+          <section class="ribbon-group font"><div><label>Calibri (Body)</label><label>11⌄</label></div><p><b>B</b><i>I</i><u>U</u><b>A</b><b>▾</b></p><em>Font</em></section>
+          <section class="ribbon-group paragraph"><p>☷　≡　☰　≣　↕</p><em>Paragraph</em></section>
+          <section class="ribbon-group comment-tool"><strong>▤</strong><span>New<br />Comment</span><em>Comments</em></section>
+          <section class="ribbon-group tracking"><strong>✓</strong><span>Track<br />Changes</span><em>Tracking</em></section>
+          <section class="ribbon-group changes"><strong>✓　×</strong><span>Accept<br />&amp; Reject</span><em>Changes</em></section>
+          <section class="ribbon-group styles"><label>Normal</label><label>No Spacing</label><label>Heading 1</label><em>Styles</em></section>
+          <section class="ribbon-group editing"><span>Find<br />Replace<br />Select</span><em>Editing</em></section>
+        </div>
+      </header>
+
+      <section class="spread" aria-label="Two-page writing spread">
+        <section class="page left-page" aria-label="Draft manuscript page">
+          <div class="page-body left-page-body">
+            <div class="document-region">
+              <span id="limitNotice" class="limit-notice" aria-live="polite"></span>
+              <div id="draftEditor" class="draft-editor manuscript-text" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Editable original narrative" data-placeholder="Write about something you are still trying to understand."></div>
+            </div>
+            <aside class="margin-comments" aria-label="Editorial comments">
+              <div id="commentsList" class="comments-list" aria-live="polite"><p class="empty-copy">Editorial notes will appear as the Draft develops.</p></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="page right-page" aria-label="Read-only AI revised manuscript">
+          <div id="revisionOutput" class="revision-output manuscript-text" aria-live="polite"><p class="empty-copy">Press Enter to submit it for revision.</p></div>
+        </section>
+      </section>
+
+      <div class="word-scroll" aria-hidden="true"><i>▲</i><b></b><i>▼</i></div>
+      <footer class="word-statusbar" aria-label="Document status">
+        <span>Page 1 of 2</span><span>Words: <b id="wordCount">0</b></span><span>Chinese (PRC)</span><span id="statusLabel">Ready</span><span id="authorLabel" hidden>Author 024</span>
+        <div>▤　▥　▦　 <b>100%</b>　− <i></i> +</div>
+      </footer>
+      <div class="action-bar" aria-hidden="true"><button id="deleteButton" type="button">Delete</button><button id="revisionButton" type="button">Revision</button><button id="sealButton" type="button">Seal</button></div>
+    </main>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
