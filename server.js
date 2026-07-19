@@ -16,7 +16,18 @@ const ALLOWED_COMMENT_FIELDS = new Set(["paragraph_id", "paragraph_text", "exist
 const ALLOWED_OPERATION_TYPES = new Set(["copy_edit", "clarify", "categorise", "connect_causality", "formalise", "remove_redundancy", "synthesise"]);
 const ALLOWED_CRITERIA = new Set(["clarity", "categorisation", "causal_interpretation", "psychological_legibility", "institutional_legibility", "emotional_ambiguity", "pattern_detection", "formalisation"]);
 const ALLOWED_COMMENT_CATEGORIES = new Set(["undefined_experience", "missing_pattern", "emotional_ambiguity", "causal_requirement", "category_requirement"]);
-const ALLOWED_REFERENCE_CITATIONS = new Set(["(Festinger, 1954)", "(Higgins, 1987)", "(Goffman, 1959)", "(Hacking, 1999)"]);
+// These are deliberately a small, reviewed vocabulary rather than an open
+// citation generator.  A broader set lets Pass 6 locate a narrative through
+// distinct institutional lenses without repeatedly defaulting to Goffman.
+const ALLOWED_REFERENCE_CITATIONS = new Set([
+  "(Festinger, 1954)",
+  "(Higgins, 1987)",
+  "(Goffman, 1959)",
+  "(Hacking, 1999)",
+  "(Cooley, 1902)",
+  "(Mead, 1934)",
+  "(Honneth, 1995)",
+]);
 const PASS_OPERATION_POLICY = {
   1: new Set(["copy_edit"]),
   2: new Set(["clarify", "remove_redundancy"]),
@@ -925,6 +936,14 @@ function validateSinglePassOutput(output, input) {
     throw new Error("Invalid revision pass payload.");
   }
   let workingText = input.target_text;
+  // A paragraph is not an isolated article.  Pass 6 receives the whole
+  // committed manuscript, so its references should not duplicate an author
+  // already used to interpret another paragraph in that same snapshot.
+  const citationsElsewhere = new Set(
+    input.document_context
+      .filter((paragraph) => paragraph.id !== input.target_paragraph_id)
+      .flatMap((paragraph) => extractReferenceCitations(paragraph.text)),
+  );
   let referenceCount = extractReferenceCitations(workingText).length;
   for (const operation of pass.operations) {
     const required = ["operation_id", "type", "source_quote", "revised_text", "insert_after", "reason"];
@@ -944,6 +963,9 @@ function validateSinglePassOutput(output, input) {
     }
     if (input.pass_number < 4 && citations.length) {
       throw new Error("References are only permitted in Pass 4, Pass 5, or Pass 6.");
+    }
+    if (input.pass_number === 6 && citations.some((citation) => citationsElsewhere.has(citation))) {
+      throw new Error("Pass 6 must use an unused theoretical reference when another paragraph already cites that author.");
     }
     const referenceLimit = input.pass_number === 6 ? 3 : 1;
     if (referenceCount + citations.length > referenceLimit) {
@@ -978,7 +1000,7 @@ function enforcePassOperationPolicy(output, input) {
 }
 
 function extractReferenceCitations(value) {
-  return String(value).match(/\((?:Festinger|Higgins|Goffman|Hacking),\s*\d{4}\)/g) || [];
+  return String(value).match(/\((?:Festinger|Higgins|Goffman|Hacking|Cooley|Mead|Honneth),\s*\d{4}\)/g) || [];
 }
 
 function validateEditorialCommentsOutput(output, paragraphText) {
@@ -1588,19 +1610,32 @@ ornament after an unsupported claim. If no framework is genuinely supported,
 use no citation. References support a reading; they never prove that the author
 belongs to a category or has a diagnosis.
 
+# Citation diversity in Pass 6
+
+Before selecting a reference, inspect all citations already present in the
+complete document context. Do not default to Goffman, and do not reuse an
+author already cited in another current paragraph. Select an unused framework
+only when it offers a genuinely different, text-supported reading. If the
+existing document already has enough theoretical framing, make no additional
+citation. Diversity means distinct analytical relations, not a longer list of
+names.
+
 When you use a citation in Pass 6, name the theory in the prose and give its
 central idea in one concise explanatory clause or sentence before returning to
 the present narrative. Do not leave a bare parenthetical citation. For example,
 on the first appearance use a recognisable theory name: Social Comparison
 Theory (Festinger, 1954), Self-Discrepancy Theory (Higgins, 1987), Goffman's
-Presentation of Self (Goffman, 1959), or Hacking's account of classificatory
-language (Hacking, 1999). State the central idea briefly: self-evaluation
-oriented through others; tension between perceived and aspired selves;
-management of social presentation; or the participation of classificatory
-language in subjective experience. Paraphrase these ideas naturally rather
-than reciting definitions. Keep the explanation to one sentence at most per
-theory: it must clarify why the framework offers this reading, not become a
-lesson in theory.
+Presentation of Self (Goffman, 1959), Hacking's account of classificatory
+language (Hacking, 1999), Cooley's Looking-Glass Self (Cooley, 1902), Mead's
+social account of the self (Mead, 1934), or Honneth's recognition framework
+(Honneth, 1995). State the central idea briefly: self-evaluation oriented
+through others; tension between perceived and aspired selves; management of
+social presentation; the participation of classificatory language in
+subjective experience; self-imagining through perceived others; the social
+formation of selfhood; or the role of recognition in a person's relation to
+self. Paraphrase these ideas naturally rather than reciting definitions. Keep
+the explanation to one sentence at most per theory: it must clarify why the
+framework offers this reading, not become a lesson in theory.
 
 The final paragraph should read like a cautious journal-style analysis of the
 author's narrative, not a polished diary entry, an AI summary, or a list of
@@ -1625,13 +1660,20 @@ or cite a source not listed here:
 - (Goffman, 1959): presentation of self in social interaction.
 - (Hacking, 1999): the social construction and classification of persons or
   experience.
+- (Cooley, 1902): the looking-glass self and self-imagining through perceived
+  others.
+- (Mead, 1934): the social formation of selfhood in interaction.
+- (Honneth, 1995): recognition and its role in a person's relation to self.
 
 Choose a reference only when its relation to recurring material can be stated
 in the paragraph itself: comparative self-evaluation may support Festinger;
 actual, ideal, or ought-self tensions may support Higgins; self-presentation in
-interaction may support Goffman; and concern with labels or classificatory
-language may support Hacking. Omit references when this relation is not
-supported. Never add a citation merely to signal academic authority.
+interaction may support Goffman; concern with labels or classificatory language
+may support Hacking; imagined appraisal may support Cooley; interactional
+formation of self may support Mead; and a recurring concern with recognition
+may support Honneth. Omit references when this relation is not supported.
+Never add a citation merely to signal academic authority. In Pass 6, prefer a
+framework not already used elsewhere in the supplied document context.
 
 If used, the surrounding wording must remain qualified: "may be understood
 through", "partially aligns with", or "is broadly consistent with". A citation
