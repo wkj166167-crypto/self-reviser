@@ -55,6 +55,12 @@ const state = {
     revisionPaused: false,
   },
   highlightedCommentId: "",
+  // The public exhibition is a cumulative manuscript. These paragraphs are
+  // rendered alongside the current visitor's session but never serialized
+  // back into it and never enter its AI revision context.
+  publicManuscript: {
+    paragraphs: [],
+  },
   archive: {
     session: null,
     creating: null,
@@ -137,6 +143,42 @@ function archiveHeaders() {
     "Content-Type": "application/json",
     ...(state.archive.session?.writeToken ? { "X-Session-Write-Token": state.archive.session.writeToken } : {}),
   };
+}
+
+function normalizePublicParagraph(item) {
+  return {
+    id: item.id,
+    text: item.text || item.committed_text || "",
+    committed: true,
+    committedText: item.committed_text || item.text || "",
+    pending: false,
+    isPublished: true,
+    sessionId: item.session_id || "",
+    comments: Array.isArray(item.comments) ? item.comments : [],
+    revision: item.revision || {},
+  };
+}
+
+function publicDocumentParagraphs() {
+  const currentSessionId = state.archive.session?.id || "";
+  return state.publicManuscript.paragraphs.filter((paragraph) => paragraph.sessionId !== currentSessionId);
+}
+
+function visibleDocumentParagraphs() {
+  return [...publicDocumentParagraphs(), ...state.draftState.paragraphs];
+}
+
+async function loadPublicManuscript() {
+  try {
+    const payload = await archiveRequest("/api/exhibition/manuscript");
+    state.publicManuscript.paragraphs = (payload.paragraphs || []).map(normalizePublicParagraph);
+    renderDraftDecorations();
+    renderComments();
+    renderRevisionDocument();
+  } catch {
+    // The live writing surface remains usable if the public history is briefly
+    // unavailable. Archive diagnostics remain the staff-facing error surface.
+  }
 }
 
 async function ensureArchiveSession() {
@@ -857,14 +899,19 @@ function applyOperationMarkup(currentHtml, operation) {
 }
 
 function renderRevisionDocument() {
-  const paragraphs = state.draftState.paragraphs;
-  if (!state.revisionState.tasks.size) {
+  const paragraphs = visibleDocumentParagraphs();
+  const hasRevision = paragraphs.some((paragraph) => {
+    const revision = state.revisionState.tasks.get(paragraph.id) || paragraph.revision || {};
+    return Boolean(revision.frameHtml || revision.html || revision.text || revision.passIndex || revision.pass_index);
+  });
+  if (!hasRevision) {
     els.revisionOutput.innerHTML = '<p class="empty-copy">Press Enter to submit it for revision.</p>';
     return;
   }
   const body = paragraphs.map((paragraph) => {
     const task = state.revisionState.tasks.get(paragraph.id);
-    const html = task?.frameHtml ?? task?.html ?? escapeHtml(paragraph.text);
+    const savedRevision = paragraph.revision || {};
+    const html = task?.frameHtml ?? task?.html ?? savedRevision.html ?? escapeHtml(savedRevision.text || paragraph.text);
     const error = task?.error ? `<span class="error-copy">${escapeHtml(task.error)}</span>` : "";
     const attention = state.revisionState.attention;
     const readingCaret = attention?.taskId === paragraph.id && attention.phase === "reading"
@@ -1032,7 +1079,9 @@ function requestEditorialComments(paragraphId, paragraphText, existingComments, 
 }
 
 function activeCommentsForParagraph(paragraphId) {
-  return (state.commentState.tasks.get(paragraphId)?.comments || []).filter((comment) => comment.status === "active");
+  const task = state.commentState.tasks.get(paragraphId);
+  const paragraph = visibleDocumentParagraphs().find((item) => item.id === paragraphId);
+  return (task?.comments || paragraph?.comments || []).filter((comment) => comment.status === "active");
 }
 
 function removeInvalidCommentAnchors() {
@@ -1061,14 +1110,14 @@ function renderDraftDecorations({ focusParagraphId = "" } = {}) {
   const activeParagraphId = focusParagraphId || activeParagraph?.dataset.paragraphId || "";
   const caretOffset = activeParagraph ? caretOffsetWithin(activeParagraph) : null;
   const scrollTop = els.draftEditor.scrollTop;
-  const html = state.draftState.paragraphs.map((paragraph) => {
+  const html = visibleDocumentParagraphs().map((paragraph) => {
     let paragraphHtml = escapeHtml(paragraph.text);
     activeCommentsForParagraph(paragraph.id).forEach((comment) => {
       const source = escapeHtml(comment.source_quote);
       if (!source || !paragraphHtml.includes(source)) return;
       paragraphHtml = paragraphHtml.replace(source, `<mark class="draft-marker ${state.highlightedCommentId === comment.id ? "active" : ""}" data-comment-id="${comment.id}" data-marker="${comment.number}">${source}</mark>`);
     });
-    const isEditable = !paragraph.committed && !paragraph.pending && !state.sealed;
+    const isEditable = !paragraph.isPublished && !paragraph.committed && !paragraph.pending && !state.sealed;
     const classes = isEditable ? "is-editing" : (paragraph.pending ? "is-pending" : "is-committed");
     return `<p class="draft-paragraph ${classes}" data-paragraph-id="${paragraph.id}" contenteditable="${isEditable}" spellcheck="true"${isEditable ? ' data-placeholder="Write about something you are still trying to understand."' : ""}>${paragraphHtml}</p>`;
   }).join("");
@@ -1091,7 +1140,7 @@ function clearDraftDecorations() {
 }
 
 function renderComments() {
-  const visible = state.draftState.paragraphs.flatMap((paragraph) => activeCommentsForParagraph(paragraph.id));
+  const visible = visibleDocumentParagraphs().flatMap((paragraph) => activeCommentsForParagraph(paragraph.id));
   if (!visible.length) {
     els.commentsList.innerHTML = '<p class="empty-copy">Editorial notes will appear as the Draft develops.</p>';
     return;
@@ -1437,6 +1486,7 @@ async function resetExhibitionSession() {
   els.revisionOutput.scrollTop = 0;
   setStatus("empty");
   updateChrome();
+  await loadPublicManuscript();
 }
 
 setStatus("empty");
@@ -1446,3 +1496,4 @@ renderComments();
 updateChrome();
 window.addEventListener("pagehide", flushArchiveOnPageHide);
 void restoreActiveArchiveSession();
+void loadPublicManuscript();

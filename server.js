@@ -226,6 +226,32 @@ app.post("/api/archive/sessions/:sessionId/close", async (req, res) => {
   }
 });
 
+// The exhibition spread is a cumulative public manuscript. Only paragraphs
+// that a visitor explicitly submitted are shared here; live, unfinished text
+// remains private to the browser that is currently writing it. Session data
+// stays separate in Supabase even though the public surface reads it together.
+app.get("/api/exhibition/manuscript", async (_req, res) => {
+  if (!isArchiveConfigured()) return res.status(503).json({ error: "Persistent archive is not configured." });
+  try {
+    const sessions = await supabaseRest("exhibition_sessions?select=id,sequence_number,document_state,updated_at&order=sequence_number.asc&limit=500", { method: "GET" });
+    const paragraphs = (Array.isArray(sessions) ? sessions : []).flatMap((session) => {
+      const saved = Array.isArray(session.document_state?.paragraphs) ? session.document_state.paragraphs : [];
+      return saved
+        .filter((paragraph) => paragraph?.state === "committed" && String(paragraph.committed_text || paragraph.text || "").trim())
+        .map((paragraph) => ({
+          ...paragraph,
+          session_id: session.id,
+          session_sequence_number: session.sequence_number,
+          session_updated_at: session.updated_at,
+        }));
+    });
+    return res.json({ paragraphs });
+  } catch (error) {
+    console.error("Public manuscript load failed:", describeArchiveError(error));
+    return res.status(502).json({ error: "The accumulated manuscript is temporarily unavailable." });
+  }
+});
+
 // Kept outside the public interface. Supply ARCHIVE_DIAGNOSTIC_SECRET as an
 // X-Archive-Diagnostic-Key header when checking Render/Supabase before opening.
 app.get("/api/archive/diagnostics", async (req, res) => {
