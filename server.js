@@ -39,6 +39,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express();
 const isProduction = process.env.NODE_ENV === "production";
+// Vercel invokes the exported Express application as a serverless function.
+// Keep the local/Render HTTP server path separate so the exhibition behaves
+// identically in development and on either host.
+const isVercel = Boolean(process.env.VERCEL);
 
 app.use(express.json({ limit: "512kb" }));
 
@@ -334,7 +338,7 @@ app.get("/api/admin/sessions/:sessionId/json", async (req, res) => {
   }
 });
 
-if (isProduction) {
+if (isProduction && !isVercel) {
   app.use(express.static(path.join(__dirname, "dist")));
   app.get("/admin/archive", (_req, res) => {
     res.sendFile(path.join(__dirname, "dist", "admin.html"));
@@ -342,7 +346,7 @@ if (isProduction) {
   app.get("*splat", (_req, res) => {
     res.sendFile(path.join(__dirname, "dist", "index.html"));
   });
-} else {
+} else if (!isVercel) {
   const vite = await createViteMiddleware();
   app.get("/admin/archive", async (req, res, next) => {
     try {
@@ -356,9 +360,13 @@ if (isProduction) {
   app.use(vite.middlewares);
 }
 
-app.listen(PORT, HOST, () => {
-  console.log(`Self Reviser dev server running at http://${HOST}:${PORT}`);
-});
+if (!isVercel) {
+  app.listen(PORT, HOST, () => {
+    console.log(`Self Reviser dev server running at http://${HOST}:${PORT}`);
+  });
+}
+
+export default app;
 
 async function createViteMiddleware() {
   const { createServer } = await import("vite");
