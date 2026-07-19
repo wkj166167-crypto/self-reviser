@@ -1,130 +1,174 @@
 # Self Reviser
 
-Interactive exhibition writing workspace with persistent, private archive support.
+Interactive exhibition writing environment in which a visitor's unfinished
+Draft is read through Editorial Notes and six rounds of tracked institutional
+revision. The project is an artwork about the transformation of lived
+experience into institutionally legible language; it is not a writing assistant
+or diagnostic tool.
 
-## Local setup
+Current production: [self-reviser.vercel.app](https://self-reviser.vercel.app)
 
-1. Install dependencies:
+For full project transfer information, read:
+
+- [HANDOFF.md](./HANDOFF.md)
+- [TASKS.md](./TASKS.md)
+- [DECISIONS.md](./DECISIONS.md)
+- [FILES.md](./FILES.md)
+- [SYSTEM_SPECIFICATION.md](./SYSTEM_SPECIFICATION.md)
+
+## Requirements
+
+- Node.js 20+ recommended
+- npm or pnpm
+- An OpenAI API project/key for live Notes and Revision
+- A Supabase project for persistent Sessions and the private archive
+
+## Local installation
 
 ```bash
 npm install
-```
-
-2. Create a local `.env` file from the example:
-
-```bash
 cp .env.example .env
 ```
 
-3. Fill in `.env` locally:
+Fill only the local `.env` file. Do **not** commit it or send it to a browser.
 
-```bash
-OPENAI_API_KEY=
-OPENAI_MODEL=
+```dotenv
+OPENAI_API_KEY=<server-only OpenAI API key>
+OPENAI_MODEL=<selected model name>
 
-# Required for Phase 1 persistent sessions
-SUPABASE_URL=
-SUPABASE_SERVICE_ROLE_KEY=
-ARCHIVE_SESSION_TOKEN_PEPPER=
-ARCHIVE_DIAGNOSTIC_SECRET=
+SUPABASE_URL=<Supabase project URL>
+SUPABASE_SERVICE_ROLE_KEY=<server-only Supabase service role key>
+ARCHIVE_SESSION_TOKEN_PEPPER=<random secret>
+ARCHIVE_DIAGNOSTIC_SECRET=<random staff diagnostic secret>
 EXHIBITION_TIMEZONE=Europe/London
+
+ADMIN_EMAIL_ALLOWLIST=<comma-separated invited administrator email addresses>
+APP_BASE_URL=http://127.0.0.1:5173
 ```
 
-Do not commit `.env`. All keys are read only by the server. In particular,
-`SUPABASE_SERVICE_ROLE_KEY` must never be exposed to browser code.
-
-4. Start the app:
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:5173`.
+Open [http://127.0.0.1:5173](http://127.0.0.1:5173).
 
-The dev server uses Express for `/api/revise` and Vite middleware for the frontend.
+## Commands
 
-## Phase 1 archive setup
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Start Express + Vite development server. |
+| `npm run start` | Start production-style Express server. |
+| `npm run build` | Build Vite frontend into `dist/`. |
+| `npm run check` | Syntax-check server and main frontend source. |
 
-1. Create a Supabase project and run
-   [`supabase/migrations/001_phase1_exhibition_archive.sql`](./supabase/migrations/001_phase1_exhibition_archive.sql)
-   in its SQL editor.
-2. Fill in the archive environment variables above. Generate both archive
-   secrets with a password manager; they are not visitor-facing values.
-3. Start the site and write a short paragraph. Its browser-local session token
-   permits refresh recovery, while its structured content is written to
-   Supabase through the Express server.
-4. From a staff terminal, verify the connection without exposing a public UI:
+The browser frontend talks only to this server. The server owns OpenAI and
+Supabase credentials.
+
+## Supabase setup and persistence test
+
+1. In Supabase SQL Editor, run
+   [`supabase/migrations/001_phase1_exhibition_archive.sql`](./supabase/migrations/001_phase1_exhibition_archive.sql).
+2. Add the Supabase values and archive secrets to `.env`.
+3. Start the app, write a paragraph, and confirm an `exhibition_sessions` row
+   appears in Supabase.
+4. Refresh the same browser and confirm the active Session restores.
+5. Run staff diagnostics locally:
 
    ```bash
-   curl -H "X-Archive-Diagnostic-Key: YOUR_SECRET" http://127.0.0.1:5173/api/archive/diagnostics
+   curl -H "X-Archive-Diagnostic-Key: <ARCHIVE_DIAGNOSTIC_SECRET>" \
+     http://127.0.0.1:5173/api/archive/diagnostics
    ```
 
-   A successful response reports `configured: true` and `database.ok: true`.
-   Confirm the resulting record in Supabase's `exhibition_sessions` table,
-   refresh the same browser, and verify that the active manuscript returns.
+Expected result includes `configured: true` and `database.ok: true`.
 
-Phase 1 stores data only in PostgreSQL. Private admin authentication, PDFs,
-snapshots, and ZIP export are intentionally deferred to later phases.
+The staff shortcut `Ctrl + Alt + R` saves/closes the current Session and clears
+only the public interface. It does not delete archived data.
 
-## Phase 2 private archive setup
+## Private archive administration
 
-1. In Supabase Authentication, invite each administrator email before use. Do
-   not enable public sign-up.
-2. Add `ADMIN_EMAIL_ALLOWLIST` as a comma-separated set of those invited email
-   addresses. Set `APP_BASE_URL` to the current deployment origin. During local
-   testing it is `http://127.0.0.1:5173`.
-3. In Supabase Auth URL configuration, permit
-   `http://127.0.0.1:5173/admin/archive` as a redirect URL. Add the Render
-   equivalent before production deployment.
-4. Visit `/admin/archive`, request a magic link with an allow-listed email, and
-   open the link in the same browser. The private page exposes session search,
-   detail inspection, and JSON download only. It has no public counterpart.
+The public website has no save/archive controls. Private administration is at:
 
-## Render deployment preparation
-
-The repository includes [`render.yaml`](./render.yaml) for the web service. It
-builds the static frontend, starts the Express server, and makes the server
-listen on Render's public network interface. It does not contain any secrets.
-
-1. Push this project to a private GitHub repository, then create a Render **Web
-   Service** from that repository. Render will read `render.yaml` if you choose
-   the Blueprint option, or you can use the commands specified there manually.
-2. In Render's **Environment** settings, add the following exact values from
-   your local `.env`: `OPENAI_API_KEY`, `OPENAI_MODEL`, `SUPABASE_URL`,
-   `SUPABASE_SERVICE_ROLE_KEY`, `ARCHIVE_SESSION_TOKEN_PEPPER`,
-   `ARCHIVE_DIAGNOSTIC_SECRET`, and `ADMIN_EMAIL_ALLOWLIST`.
-3. Leave `HOST=0.0.0.0`, `NODE_ENV=production`, and
-   `EXHIBITION_TIMEZONE=Europe/London` as declared in `render.yaml`.
-4. After Render gives the service a public URL, add that URL as
-   `APP_BASE_URL` in Render, for example `https://self-reviser.onrender.com`.
-   In Supabase Authentication → URL Configuration, also add
-   `https://self-reviser.onrender.com/admin/archive` as an allowed redirect
-   URL. Update the Site URL to the same Render origin when this becomes the
-   exhibition deployment.
-5. Redeploy once after adding `APP_BASE_URL`, then test the public page,
-   `/api/archive/diagnostics` from a staff terminal, and `/admin/archive`.
-
-Do not copy `.env` into Git or into a browser-facing Vite variable. The
-Supabase service key and archive secrets must exist only in Render's private
-environment settings.
-
-## API
-
-`POST /api/revise`
-
-Request body:
-
-```json
-{
-  "original_narrative": "Draft text",
-  "editorial_intensity": "low"
-}
+```text
+/admin/archive
 ```
 
-Allowed intensity values: `low`, `medium`, `high`.
+Before using it:
 
-## Development mode
+1. Invite the administrator accounts in Supabase Auth; do not enable public
+   sign-up.
+2. Put the invited addresses in `ADMIN_EMAIL_ALLOWLIST`.
+3. Add both local and deployed `/admin/archive` URLs in Supabase Auth → URL
+   Configuration.
+4. Set `APP_BASE_URL` to the current deployment origin.
 
-The frontend calls the real `/api/revise` endpoint by default.
+The page uses magic-link email. The current Supabase default sender may hit a
+rate limit; configure SMTP before relying on it during/after exhibition.
 
-For interface-only testing without API access, add `?mock=1` to the URL. Mock mode is explicit and should not be used to judge AI revision quality.
+## Vercel deployment
+
+Vercel is the active deployment target. `vercel.json` handles the Vite build,
+Express API serverless function, and `/admin/archive` rewrite.
+
+1. Push this repository to GitHub.
+2. Import the repository into Vercel.
+3. Add every variable from `.env` in Vercel Project Settings → Environment
+   Variables. Use the same variable names; never use `VITE_` for secrets.
+4. Deploy.
+5. Set `APP_BASE_URL=https://<your-vercel-domain>` in Vercel.
+6. Add the Vercel origin and
+   `https://<your-vercel-domain>/admin/archive` to Supabase Auth URL
+   Configuration.
+7. Verify public writing, Supabase session persistence, refresh recovery, and
+   diagnostics.
+
+`render.yaml` remains only as historical fallback. Render deployment previously
+failed due to private-repository authorization; do not treat it as production
+configuration.
+
+## Exhibition behavior in brief
+
+- Visitors type only in the left Draft.
+- Enter commits new text and starts its six-pass revision task.
+- Submitted Draft paragraphs lock; a new editable paragraph is created.
+- Comments read at paragraph scope.
+- Revision reads a frozen whole-document context but edits only the initiating
+  paragraph.
+- A visitor may keep writing while earlier paragraphs revise.
+- Passes 1–6 are sequential per paragraph and retain Track Changes.
+- The Draft remains author-owned; do not automatically rewrite it.
+
+Read `SYSTEM_SPECIFICATION.md` before changing behavior or prompts.
+
+## Offline printable archives
+
+The local scripts under `scripts/` generate a selected-manuscript PDF without
+changing the public exhibition or database:
+
+```bash
+# Network/API-bearing: creates full structured archive data from a selected Draft.
+node scripts/generate-printable-archive.mjs
+
+# Local rendering from saved data.
+node scripts/render-archive-from-pipeline.mjs test-archive-001
+node scripts/render-archive-html.mjs \
+  tmp/archive-render/test-archive-001.html \
+  output/pdf/self-reviser-test-archive-001-printable-archive.pdf
+```
+
+The current best combined example is:
+
+`output/pdf/self-reviser-test-archive-001-plural-theory-complete.pdf`
+
+The plural-theory paper generator sends an accepted Pass 6 manuscript to the
+OpenAI API. Obtain explicit consent before running it on private writing.
+
+## Security notes
+
+- Never commit `.env`.
+- Never expose `SUPABASE_SERVICE_ROLE_KEY`, OpenAI keys, archive peppers,
+  diagnostic secrets, or session write tokens to client code.
+- Rotate any secret that may have been copied into an unsafe place.
+- The handoff ZIP excludes `.env`, dependencies, temporary QA images, Git
+  metadata, and build output.
