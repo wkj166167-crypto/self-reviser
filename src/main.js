@@ -1,5 +1,13 @@
 import "./draft-live.css";
 
+// Supabase may deliver a magic-link session to the configured Site URL rather
+// than the requested archive path. Preserve that session fragment and hand it
+// directly to the private archive before the public exhibition app starts.
+const authCallbackHash = new URLSearchParams(window.location.hash.slice(1));
+if (authCallbackHash.get("access_token")) {
+  window.location.replace(`/admin/archive${window.location.search}${window.location.hash}`);
+}
+
 const MAX_CHARS = 10000;
 // Revision should be readable at the character level, while the editorial
 // attention itself moves continuously from one pass into the next.
