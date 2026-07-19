@@ -27,6 +27,20 @@ const ALLOWED_REFERENCE_CITATIONS = new Set([
   "(Cooley, 1902)",
   "(Mead, 1934)",
   "(Honneth, 1995)",
+  "(Tajfel, 1981)",
+  "(Turner, 1987)",
+  "(Bourdieu, 1977)",
+  "(Foucault, 1977)",
+  "(Butler, 1990)",
+  "(Ricoeur, 1992)",
+  "(Bruner, 1990)",
+  "(McAdams, 1993)",
+  "(Hochschild, 1983)",
+  "(Ahmed, 2004)",
+  "(Gergen, 1991)",
+  "(Illouz, 2007)",
+  "(Turkle, 2011)",
+  "(Sennett, 1977)",
 ]);
 const PASS_OPERATION_POLICY = {
   1: new Set(["copy_edit"]),
@@ -1000,7 +1014,7 @@ function enforcePassOperationPolicy(output, input) {
 }
 
 function extractReferenceCitations(value) {
-  return String(value).match(/\((?:Festinger|Higgins|Goffman|Hacking|Cooley|Mead|Honneth),\s*\d{4}\)/g) || [];
+  return String(value).match(/\((?:Festinger|Higgins|Goffman|Hacking|Cooley|Mead|Honneth|Tajfel|Turner|Bourdieu|Foucault|Butler|Ricoeur|Bruner|McAdams|Hochschild|Ahmed|Gergen|Illouz|Turkle|Sennett),\s*\d{4}\)/g) || [];
 }
 
 function validateEditorialCommentsOutput(output, paragraphText) {
@@ -1623,19 +1637,14 @@ names.
 When you use a citation in Pass 6, name the theory in the prose and give its
 central idea in one concise explanatory clause or sentence before returning to
 the present narrative. Do not leave a bare parenthetical citation. For example,
-on the first appearance use a recognisable theory name: Social Comparison
-Theory (Festinger, 1954), Self-Discrepancy Theory (Higgins, 1987), Goffman's
-Presentation of Self (Goffman, 1959), Hacking's account of classificatory
-language (Hacking, 1999), Cooley's Looking-Glass Self (Cooley, 1902), Mead's
-social account of the self (Mead, 1934), or Honneth's recognition framework
-(Honneth, 1995). State the central idea briefly: self-evaluation oriented
-through others; tension between perceived and aspired selves; management of
-social presentation; the participation of classificatory language in
-subjective experience; self-imagining through perceived others; the social
-formation of selfhood; or the role of recognition in a person's relation to
-self. Paraphrase these ideas naturally rather than reciting definitions. Keep
-the explanation to one sentence at most per theory: it must clarify why the
-framework offers this reading, not become a lesson in theory.
+on the first appearance use a recognisable theory name from the reviewed
+library below. For instance, this may be Social Comparison Theory (Festinger,
+1954), Self-Discrepancy Theory (Higgins, 1987), Cooley's Looking-Glass Self
+(Cooley, 1902), a narrative-identity approach (Ricoeur, 1992), or a framework
+of recognition (Honneth, 1995). State the central idea briefly, then return to
+the narrative. Paraphrase ideas naturally rather than reciting definitions.
+Keep the explanation to one sentence at most per theory: it must clarify why
+the framework offers this reading, not become a lesson in theory.
 
 The final paragraph should read like a cautious journal-style analysis of the
 author's narrative, not a polished diary entry, an AI summary, or a list of
@@ -1664,6 +1673,26 @@ or cite a source not listed here:
   others.
 - (Mead, 1934): the social formation of selfhood in interaction.
 - (Honneth, 1995): recognition and its role in a person's relation to self.
+- (Tajfel, 1981): social identity, group categorisation, and belonging.
+- (Turner, 1987): self-categorisation and the contextual organisation of self.
+- (Bourdieu, 1977): habitus and socially acquired dispositions.
+- (Foucault, 1977): discipline, observation, and the internalisation of norms.
+- (Butler, 1990): performativity and the repetition of socially intelligible
+  self-presentation.
+- (Ricoeur, 1992): narrative identity and the interpretation of selfhood over
+  time.
+- (Bruner, 1990): narrative meaning-making and the organisation of experience.
+- (McAdams, 1993): life stories and narrative identity.
+- (Hochschild, 1983): emotion management and the social organisation of
+  feeling.
+- (Ahmed, 2004): affective orientations and how feelings attach to objects or
+  relations.
+- (Gergen, 1991): relationally shaped selfhood in conditions of multiple social
+  demands.
+- (Illouz, 2007): the cultural framing of emotional experience and intimacy.
+- (Turkle, 2011): technologically mediated connection, projection, and
+  conversational expectation.
+- (Sennett, 1977): tensions between public presentation and private interiority.
 
 Choose a reference only when its relation to recurring material can be stated
 in the paragraph itself: comparative self-evaluation may support Festinger;
@@ -1674,6 +1703,17 @@ formation of self may support Mead; and a recurring concern with recognition
 may support Honneth. Omit references when this relation is not supported.
 Never add a citation merely to signal academic authority. In Pass 6, prefer a
 framework not already used elsewhere in the supplied document context.
+
+Other reviewed possibilities should be selected only for their specific fit:
+categorisation or belonging may support Tajfel or Turner; habitual social
+dispositions may support Bourdieu; self-monitoring under norms may support
+Foucault; repeated performance of an intelligible self may support Butler;
+narrative self-organisation may support Ricoeur, Bruner, or McAdams; management
+of feeling may support Hochschild or Ahmed; relationally distributed identity
+may support Gergen; cultural forms of intimacy may support Illouz; mediated
+conversation may support Turkle; and a tension between public presentation and
+private interiority may support Sennett. These are alternatives, not a menu to
+be exhaustively cited.
 
 If used, the surrounding wording must remain qualified: "may be understood
 through", "partially aligns with", or "is broadly consistent with". A citation
