@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { createRequire } from "node:module";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile, access } from "node:fs/promises";
 import path from "node:path";
 import OpenAI from "openai";
 
@@ -10,9 +10,12 @@ const { chromium } = require("/Users/marigold/.cache/codex-runtimes/codex-primar
 const root = process.cwd();
 const inputPath = process.argv[2] || "archive-inputs/test-archive-001.txt";
 const archiveId = path.basename(inputPath, path.extname(inputPath));
+const freshRun = process.argv.includes("--fresh");
 const outputDir = path.join(root, "output", "pdf");
 const dataDir = path.join(root, "output", "archive-data");
 const htmlDir = path.join(root, "tmp", "archive-render");
+const checkpointDir = path.join(root, "tmp", "archive-checkpoints");
+const checkpointPath = path.join(checkpointDir, `${archiveId}.json`);
 const apiBase = process.env.ARCHIVE_PIPELINE_BASE_URL || "https://self-reviser.vercel.app";
 const model = process.env.OPENAI_MODEL;
 
@@ -29,7 +32,7 @@ if (!process.env.OPENAI_API_KEY || !model) {
   throw new Error("OPENAI_API_KEY and OPENAI_MODEL are required locally to generate the academic paper metadata.");
 }
 
-await Promise.all([mkdir(outputDir, { recursive: true }), mkdir(dataDir, { recursive: true }), mkdir(htmlDir, { recursive: true })]);
+await Promise.all([mkdir(outputDir, { recursive: true }), mkdir(dataDir, { recursive: true }), mkdir(htmlDir, { recursive: true }), mkdir(checkpointDir, { recursive: true })]);
 
 const source = (await readFile(path.resolve(root, inputPath), "utf8")).trim();
 const sourceParagraphs = source.split(/\n\s*\n+/).map((text, index) => ({
@@ -180,39 +183,57 @@ async function request(pathname, body) {
   return payload;
 }
 
-const tasks = sourceParagraphs.map((paragraph) => ({
-  ...paragraph,
-  text: paragraph.source,
-  html: escapeHtml(paragraph.source),
-  history: [],
-  editLedger: [],
-}));
+let checkpoint = null;
+if (!freshRun) {
+  try {
+    await access(checkpointPath);
+    checkpoint = JSON.parse(await readFile(checkpointPath, "utf8"));
+    if (checkpoint.sourceText !== source) checkpoint = null;
+  } catch { /* First run has no checkpoint. */ }
+}
 
-const commentResponses = await Promise.all(tasks.map(async (task) => {
-  const response = await request("/api/editorial-comments", {
-    paragraph_id: task.id,
-    paragraph_text: task.source,
-    existing_comments: [],
-    requested_count: 2,
-  });
-  return (response.comments || []).map((comment, index) => ({ ...comment, id: `${task.id}-comment-${index + 1}`, paragraphId: task.id, number: index + 1, status: "active" }));
-}));
+let tasks;
+let commentsByParagraph;
+let stageSnapshots;
 
-const commentsByParagraph = new Map(tasks.map((task, index) => [task.id, commentResponses[index]]));
-const stageSnapshots = new Map();
+if (checkpoint) {
+  tasks = checkpoint.tasks;
+  commentsByParagraph = new Map(Object.entries(checkpoint.comments || {}));
+  stageSnapshots = new Map(Object.entries(checkpoint.stages || {}).map(([key, value]) => [Number(key), value]));
+  console.log(`Resuming Case ${archiveId} after Pass ${Math.max(0, ...stageSnapshots.keys())}.`);
+} else {
+  tasks = sourceParagraphs.map((paragraph) => ({
+    ...paragraph,
+    text: paragraph.source,
+    html: escapeHtml(paragraph.source),
+    history: [],
+    editLedger: [],
+  }));
 
-for (let passNumber = 1; passNumber <= 6; passNumber += 1) {
-  const documentContext = tasks.map((task) => ({ id: task.id, text: task.text }));
-  const passResponses = await Promise.all(tasks.map((task) => request("/api/revision-pass", {
-    document_context: documentContext,
-    target_paragraph_id: task.id,
-    target_text: task.text,
-    pass_number: passNumber,
-    editorial_intensity: passNumber <= 2 ? "low" : passNumber <= 4 ? "medium" : "high",
-  })));
+  const commentResponses = await Promise.all(tasks.map(async (task) => {
+    const response = await request("/api/editorial-comments", {
+      paragraph_id: task.id,
+      paragraph_text: task.source,
+      existing_comments: [],
+      requested_count: 2,
+    });
+    return (response.comments || []).map((comment, index) => ({ ...comment, id: `${task.id}-comment-${index + 1}`, paragraphId: task.id, number: index + 1, status: "active" }));
+  }));
+  commentsByParagraph = new Map(tasks.map((task, index) => [task.id, commentResponses[index]]));
+  stageSnapshots = new Map();
+}
 
-  tasks.forEach((task, index) => {
-    const result = passResponses[index];
+async function saveCheckpoint() {
+  await writeFile(checkpointPath, JSON.stringify({
+    sourceText: source,
+    tasks,
+    comments: Object.fromEntries(commentsByParagraph),
+    stages: Object.fromEntries(stageSnapshots),
+  }, null, 2), "utf8");
+}
+
+for (let passNumber = Math.max(0, ...stageSnapshots.keys()) + 1; passNumber <= 6; passNumber += 1) {
+  const applyPassResponse = (task, result, documentContext) => {
     if (result.safety?.triggered) throw new Error(result.safety.message || "Safety intervention prevents archive generation.");
     const operations = planPassOperations(result.pass, task.text, task.editLedger);
     const before = task.text;
@@ -229,8 +250,38 @@ for (let passNumber = 1; passNumber <= 6; passNumber += 1) {
       operations,
       context_snapshot: documentContext,
     });
-  });
+  };
+
+  if (passNumber === 6) {
+    // Pass 6 is the document-level institutional author. Run its target
+    // paragraphs in document order so every later request sees citations that
+    // were actually accepted in the preceding final paragraph. This prevents
+    // several concurrent requests from independently defaulting to the same
+    // theorist.
+    for (const task of tasks) {
+      const documentContext = tasks.map((item) => ({ id: item.id, text: item.text }));
+      const result = await request("/api/revision-pass", {
+        document_context: documentContext,
+        target_paragraph_id: task.id,
+        target_text: task.text,
+        pass_number: passNumber,
+        editorial_intensity: "high",
+      });
+      applyPassResponse(task, result, documentContext);
+    }
+  } else {
+    const documentContext = tasks.map((task) => ({ id: task.id, text: task.text }));
+    const passResponses = await Promise.all(tasks.map((task) => request("/api/revision-pass", {
+      document_context: documentContext,
+      target_paragraph_id: task.id,
+      target_text: task.text,
+      pass_number: passNumber,
+      editorial_intensity: passNumber <= 2 ? "low" : passNumber <= 4 ? "medium" : "high",
+    })));
+    tasks.forEach((task, index) => applyPassResponse(task, passResponses[index], documentContext));
+  }
   stageSnapshots.set(passNumber, tasks.map((task) => ({ id: task.id, text: task.text, html: task.html })));
+  await saveCheckpoint();
   console.log(`Pass ${passNumber}/6 complete.`);
 }
 

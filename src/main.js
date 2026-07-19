@@ -32,6 +32,17 @@ const VISIBLE_EDIT_BUDGET = {
   6: { operations: 1, characters: Infinity },
 };
 
+// Paragraphs may revise concurrently through Pass 1–5.  Pass 6 is the only
+// document-level authoring pass, so it takes a short in-browser turn. This lets
+// each later final pass read citations already introduced by an earlier one.
+let passSixQueue = Promise.resolve();
+
+function enqueuePassSix(work) {
+  const run = passSixQueue.catch(() => undefined).then(work);
+  passSixQueue = run.catch(() => undefined);
+  return run;
+}
+
 /*
   The Draft is always live. Each committed paragraph owns an independent
   six-pass task, so a later paragraph never waits for an earlier one.
@@ -732,47 +743,12 @@ async function runParagraphRevision(task) {
 
   try {
     for (let passNumber = 1; passNumber <= 6; passNumber += 1) {
-      // A pass is a separate rereading event. Keep this visible without adding
-      // a new UI panel or exposing revision-round labels inside the document.
-      if (passNumber > 1) {
-        setRevisionAttention(task, passNumber, "reading");
-      }
-      const contextSnapshot = assembleRevisionContext(task.id);
-      task.currentPassContextSnapshot = contextSnapshot;
-      task.currentPassStartedAt = nowIso();
-      const target = contextSnapshot.paragraphs.find((paragraph) => paragraph.id === task.id);
-      if (!target) return;
-      // Render the reading caret before the request begins, so model latency
-      // reads as editorial attention rather than an inactive page.
-      setRevisionAttention(task, passNumber, "reading");
-      const responsePromise = requestRevisionPass({
-        documentContext: contextSnapshot,
-        targetParagraphId: task.id,
-        targetText: target.text,
-        passNumber,
-      });
-      // Begin the request before waiting. The minimum reading time therefore
-      // never adds to normal model latency, but keeps a very brief, deliberate
-      // reading beat if the response is unusually fast.
-      await wait(passNumber === 1 ? INITIAL_READING_MS : BETWEEN_PASS_READING_MS);
-      if (!isCurrentRevisionTask(task, token)) return;
-      const result = await responsePromise;
-      if (!isCurrentRevisionTask(task, token)) return;
-      if (result.safety?.triggered) {
-        task.error = result.safety.message;
-        renderRevisionDocument();
-        return;
-      }
-      const operations = planPassOperations(result.pass, task.text, task.editLedger);
-      let nextText = task.text;
-      operations.forEach((operation) => { nextText = applyOperation(nextText, operation); });
-      task.operationQueue = [{ ...result.pass, operations, text: nextText }];
-      task.contextSnapshots ??= [];
-      task.contextSnapshots.push(contextSnapshot);
-      await playParagraphOperationQueue(task, token);
-      if (!isCurrentRevisionTask(task, token)) return;
-      task.passIndex = passNumber;
-      queueArchiveSave("revision_update", { immediate: true });
+      const runPass = () => performRevisionPass(task, token, passNumber);
+      // Keep the earlier paragraph-level work concurrent. Only the final
+      // interpretive pass is serialised so its citation choices accumulate as
+      // part of one document rather than appearing in parallel duplicates.
+      const completed = passNumber === 6 ? await enqueuePassSix(runPass) : await runPass();
+      if (!completed || !isCurrentRevisionTask(task, token)) return;
     }
     if (!isCurrentRevisionTask(task, token)) return;
   } catch (error) {
@@ -791,6 +767,48 @@ async function runParagraphRevision(task) {
       renderRevisionDocument();
     }
   }
+}
+
+async function performRevisionPass(task, token, passNumber) {
+  // A pass is a separate rereading event. Keep this visible without adding a
+  // new UI panel or exposing revision-round labels inside the document.
+  setRevisionAttention(task, passNumber, "reading");
+  const contextSnapshot = assembleRevisionContext(task.id);
+  task.currentPassContextSnapshot = contextSnapshot;
+  task.currentPassStartedAt = nowIso();
+  const target = contextSnapshot.paragraphs.find((paragraph) => paragraph.id === task.id);
+  if (!target) return false;
+  // Render the reading caret before the request begins, so model latency reads
+  // as editorial attention rather than an inactive page.
+  const responsePromise = requestRevisionPass({
+    documentContext: contextSnapshot,
+    targetParagraphId: task.id,
+    targetText: target.text,
+    passNumber,
+  });
+  // Begin the request before waiting. The minimum reading time therefore never
+  // adds to normal model latency, but keeps a brief deliberate reading beat if
+  // the response is unusually fast.
+  await wait(passNumber === 1 ? INITIAL_READING_MS : BETWEEN_PASS_READING_MS);
+  if (!isCurrentRevisionTask(task, token)) return false;
+  const result = await responsePromise;
+  if (!isCurrentRevisionTask(task, token)) return false;
+  if (result.safety?.triggered) {
+    task.error = result.safety.message;
+    renderRevisionDocument();
+    return false;
+  }
+  const operations = planPassOperations(result.pass, task.text, task.editLedger);
+  let nextText = task.text;
+  operations.forEach((operation) => { nextText = applyOperation(nextText, operation); });
+  task.operationQueue = [{ ...result.pass, operations, text: nextText }];
+  task.contextSnapshots ??= [];
+  task.contextSnapshots.push(contextSnapshot);
+  await playParagraphOperationQueue(task, token);
+  if (!isCurrentRevisionTask(task, token)) return false;
+  task.passIndex = passNumber;
+  queueArchiveSave("revision_update", { immediate: true });
+  return true;
 }
 
 function isCurrentRevisionTask(task, token) {
