@@ -419,29 +419,67 @@ async function restoreActiveArchiveSession() {
   }
 }
 
-async function closeArchiveSessionForReset() {
-  if (!getDraftText().trim()) {
-    clearStoredArchiveSession();
-    state.archive.session = null;
-    return;
-  }
-  state.archive.pendingSave = true;
-  state.archive.queuedEvent = "reset";
-  await persistArchiveState();
-  const session = state.archive.session;
-  if (!session) return;
-  const hasCommittedParagraph = state.draftState.paragraphs.some((paragraph) => paragraph.committed && paragraph.committedText.trim());
+function captureResetArchiveSnapshot() {
+  const draftText = getDraftText();
+  return {
+    draftText,
+    documentState: serializeArchiveDocument(),
+    language: detectDocumentLanguage(draftText),
+    wordCount: countWords(draftText),
+    authorLabel: state.author,
+    session: state.archive.session ? { ...state.archive.session } : null,
+    status: state.draftState.paragraphs.some((paragraph) => paragraph.committed && paragraph.committedText.trim())
+      ? "completed"
+      : "incomplete",
+  };
+}
+
+async function closeArchiveSessionForReset(snapshot) {
+  if (!snapshot.draftText.trim()) return;
   try {
+    // Finish any already-started autosave before writing the final captured
+    // document, so Reset never replaces a visitor's text with an empty page.
+    while (state.archive.saveInFlight) await wait(80);
+
+    let session = snapshot.session;
+    if (!session && state.archive.creating) session = await state.archive.creating;
+    if (!session) {
+      const payload = await archiveRequest("/api/archive/sessions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ author_label: snapshot.authorLabel }),
+      });
+      session = {
+        id: payload.session.id,
+        writeToken: payload.write_token,
+        sequenceNumber: payload.session.sequence_number,
+        createdAt: payload.session.created_at,
+      };
+    }
+    const headers = {
+      "Content-Type": "application/json",
+      "X-Session-Write-Token": session.writeToken,
+    };
+    await archiveRequest(`/api/archive/sessions/${session.id}`, {
+      method: "PUT",
+      headers,
+      body: JSON.stringify({
+        event_type: "reset",
+        document_state: snapshot.documentState,
+        language: snapshot.language,
+        word_count: snapshot.wordCount,
+      }),
+    });
     await archiveRequest(`/api/archive/sessions/${session.id}/close`, {
       method: "POST",
-      headers: archiveHeaders(),
-      body: JSON.stringify({ status: hasCommittedParagraph ? "completed" : "incomplete" }),
+      headers,
+      body: JSON.stringify({ status: snapshot.status }),
     });
-    clearStoredArchiveSession();
-    state.archive.session = null;
+    const stored = readStoredArchiveSession();
+    if (stored?.id === session.id) clearStoredArchiveSession();
   } catch (error) {
-    // Keep the local token when closing fails, so staff can refresh and retry
-    // rather than silently orphaning the visitor's saved session.
+    // The public page has already reset; preserve the diagnostic information
+    // without re-opening the previous visitor's manuscript on screen.
     state.archive.lastError = error.message;
   }
 }
@@ -1467,20 +1505,23 @@ els.draftEditor.addEventListener("mouseleave", () => setHighlightedComment(""));
 window.addEventListener("resize", positionComments);
 document.addEventListener("keydown", (event) => {
   // Kept out of the visual interface: exhibition staff can clear the session
-  // without introducing a product-style reset control for visitors. On macOS,
-  // Option + R may report “®” rather than “r”, so use the physical key code.
-  const isResetKey = event.code === "KeyR" || event.key.toLowerCase() === "r";
-  if ((event.ctrlKey || event.metaKey) && event.altKey && isResetKey) {
+  // without introducing a product-style reset control for visitors.
+  const isLegacyReset = event.ctrlKey && event.altKey && event.code === "KeyR";
+  const isStaffReset = event.metaKey && event.shiftKey && event.code === "KeyK";
+  if (isLegacyReset || isStaffReset) {
     event.preventDefault();
     void resetExhibitionSession();
   }
 });
 
 async function resetExhibitionSession() {
-  // Complete the persistent lifecycle before clearing the public screen. A
-  // completed paragraph closes the visitor session; a draft-only session is
-  // retained as incomplete. Neither result deletes archive data.
-  await closeArchiveSessionForReset();
+  // Capture and preserve the outgoing visit first, but clear the public page
+  // immediately. Staff should never have to wait for a network round trip to
+  // begin the next visitor's session.
+  const archiveSnapshot = captureResetArchiveSnapshot();
+  void closeArchiveSessionForReset(archiveSnapshot);
+  clearStoredArchiveSession();
+  state.archive.session = null;
   state.revisionState.tasks.forEach((task) => {
     task.token += 1;
     task.active = false;
