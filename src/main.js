@@ -1467,8 +1467,10 @@ els.draftEditor.addEventListener("mouseleave", () => setHighlightedComment(""));
 window.addEventListener("resize", positionComments);
 document.addEventListener("keydown", (event) => {
   // Kept out of the visual interface: exhibition staff can clear the session
-  // without introducing a product-style reset control for visitors.
-  if (event.ctrlKey && event.altKey && event.key.toLowerCase() === "r") {
+  // without introducing a product-style reset control for visitors. On macOS,
+  // Option + R may report “®” rather than “r”, so use the physical key code.
+  const isResetKey = event.code === "KeyR" || event.key.toLowerCase() === "r";
+  if ((event.ctrlKey || event.metaKey) && event.altKey && isResetKey) {
     event.preventDefault();
     void resetExhibitionSession();
   }
