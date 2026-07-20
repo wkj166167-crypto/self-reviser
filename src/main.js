@@ -22,6 +22,7 @@ const BETWEEN_PASS_READING_MS = 420;
 const REVISION_REQUEST_TIMEOUT_MS = 45000;
 const COMMENT_REQUEST_TIMEOUT_MS = 30000;
 const ARCHIVE_STORAGE_KEY = "self-reviser.active-archive-session.v1";
+const PUBLIC_HISTORY_HIDDEN_KEY = "self-reviser.public-history-hidden.v1";
 const ARCHIVE_AUTOSAVE_DELAY_MS = 900;
 const VISIBLE_EDIT_BUDGET = {
   1: { operations: 1, characters: 48 },
@@ -138,6 +139,14 @@ function clearStoredArchiveSession() {
   try { archiveStorage()?.removeItem(ARCHIVE_STORAGE_KEY); } catch { /* no-op */ }
 }
 
+function isPublicHistoryHidden() {
+  try { return archiveStorage()?.getItem(PUBLIC_HISTORY_HIDDEN_KEY) === "1"; } catch { return false; }
+}
+
+function hidePublicHistory() {
+  try { archiveStorage()?.setItem(PUBLIC_HISTORY_HIDDEN_KEY, "1"); } catch { /* no-op */ }
+}
+
 async function archiveRequest(url, options = {}) {
   const response = await fetch(url, options);
   const payload = await response.json().catch(() => ({}));
@@ -180,6 +189,13 @@ function visibleDocumentParagraphs() {
 }
 
 async function loadPublicManuscript() {
+  // Reset clears the visible exhibition surface while the full history remains
+  // safely retained in the private archive. Do not rehydrate old visitors'
+  // words onto a freshly cleared public page after a reload.
+  if (isPublicHistoryHidden()) {
+    state.publicManuscript.paragraphs = [];
+    return;
+  }
   try {
     const payload = await archiveRequest("/api/exhibition/manuscript");
     state.publicManuscript.paragraphs = (payload.paragraphs || []).map(normalizePublicParagraph);
@@ -1508,7 +1524,8 @@ document.addEventListener("keydown", (event) => {
   // without introducing a product-style reset control for visitors.
   const isLegacyReset = event.ctrlKey && event.altKey && event.code === "KeyR";
   const isStaffReset = event.metaKey && event.shiftKey && event.code === "KeyK";
-  if (isLegacyReset || isStaffReset) {
+  const isControlReset = event.ctrlKey && event.shiftKey && event.code === "KeyK";
+  if (isLegacyReset || isStaffReset || isControlReset) {
     event.preventDefault();
     void resetExhibitionSession();
   }
@@ -1521,7 +1538,9 @@ async function resetExhibitionSession() {
   const archiveSnapshot = captureResetArchiveSnapshot();
   void closeArchiveSessionForReset(archiveSnapshot);
   clearStoredArchiveSession();
+  hidePublicHistory();
   state.archive.session = null;
+  state.publicManuscript.paragraphs = [];
   state.revisionState.tasks.forEach((task) => {
     task.token += 1;
     task.active = false;
@@ -1547,7 +1566,6 @@ async function resetExhibitionSession() {
   els.revisionOutput.scrollTop = 0;
   setStatus("empty");
   updateChrome();
-  await loadPublicManuscript();
 }
 
 setStatus("empty");
