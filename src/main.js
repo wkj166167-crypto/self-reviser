@@ -189,23 +189,11 @@ function visibleDocumentParagraphs() {
 }
 
 async function loadPublicManuscript() {
-  // Reset clears the visible exhibition surface while the full history remains
-  // safely retained in the private archive. Do not rehydrate old visitors'
-  // words onto a freshly cleared public page after a reload.
-  if (isPublicHistoryHidden()) {
-    state.publicManuscript.paragraphs = [];
-    return;
-  }
-  try {
-    const payload = await archiveRequest("/api/exhibition/manuscript");
-    state.publicManuscript.paragraphs = (payload.paragraphs || []).map(normalizePublicParagraph);
-    renderDraftDecorations();
-    renderComments();
-    renderRevisionDocument();
-  } catch {
-    // The live writing surface remains usable if the public history is briefly
-    // unavailable. Archive diagnostics remain the staff-facing error surface.
-  }
+  // The public exhibition surface represents one active visitor at a time.
+  // The active session is restored separately via its local session token.
+  // Past visitors belong to the private archive only and must never be
+  // fetched back into the public page after a refresh or a new open.
+  state.publicManuscript.paragraphs = [];
 }
 
 async function ensureArchiveSession() {
