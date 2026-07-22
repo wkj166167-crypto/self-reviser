@@ -38,7 +38,7 @@ body { margin: 0; overflow: hidden; background: var(--workspace); }
 .styles { min-width: 196px; gap: 5px; }
 .styles label { padding: 12px 6px 5px; font-size: 9px; }
 .editing { min-width: 68px; }
-.exhibition-label { position: absolute; z-index: 1; top: 123px; left: 18px; width: min(150px, calc((100vw - min(93vw, calc((100vh - 150px) * 1.7))) / 2 - 22px)); color: #3d3a37; font: 300 clamp(9px, .62vw, 12px)/1.48 Calibri, Arial, sans-serif; letter-spacing: .004em; }
+.exhibition-label { position: absolute; z-index: 1; top: 133px; left: 18px; width: min(150px, calc((100vw - min(93vw, calc((100vh - 150px) * 1.7))) / 2 - 22px)); color: #3d3a37; font: 300 clamp(9px, .62vw, 12px)/1.48 Calibri, Arial, sans-serif; letter-spacing: .004em; }
 .exhibition-label p { margin: 0; }
 .exhibition-label p + p { margin-top: 16px; }
 .exhibition-label strong { color: #24211f; font-weight: 700; }
